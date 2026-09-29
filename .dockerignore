@@ -1,0 +1,18 @@
+node_modules
+.next
+.git
+.gitignore
+.env*
+!.env.example
+dev.log
+npm-debug.log*
+Dockerfile
+.dockerignore
+docker-compose*.yml
+README.md
+# Design prototype, plan workbook and one-off helper scripts are not needed in the image
+prototype
+*.xlsx
+/*.js
+.DS_Store
+*.tsbuildinfo

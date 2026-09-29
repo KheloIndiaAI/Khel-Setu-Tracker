@@ -1,0 +1,151 @@
+# CI/CD for Khel Setu: push to `dev` -> quality gate -> build image (x86_64, native) -> ECR
+# -> AWS SSM Run Command on the EC2 VM -> prisma migrate deploy -> docker compose up -> health check.
+# Auth to AWS is GitHub OIDC (no stored AWS keys). The VM keeps its own .env; the pipeline never touches secrets.
+name: CI/CD
+
+on:
+  push:
+    branches: [dev]
+  pull_request:
+    branches: [dev]
+
+concurrency:
+  group: deploy-dev
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+env:
+  AWS_REGION: ap-south-1
+  AWS_ACCOUNT_ID: "114171679953"
+  ECR_REPOSITORY: khel-setu-tracker
+  DEPLOY_ROLE: khel-setu-github-deploy
+  INSTANCE_ID: i-08d25644f46721a38
+  DEPLOY_DIR: /home/ubuntu/khel-setu
+
+jobs:
+  quality-gate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npx prisma generate
+      # next-env.d.ts is git-ignored (Next generates it on build); recreate it so tsc can resolve Next types.
+      - name: Create next-env.d.ts
+        run: printf '/// <reference types="next" />\n/// <reference types="next/image-types/global" />\n' > next-env.d.ts
+      - run: npm run typecheck
+      - run: npm test
+      # ~90 pre-existing lint errors. Reported but not blocking until the baseline is cleaned; then remove continue-on-error.
+      - name: Lint (non-blocking for now)
+        continue-on-error: true
+        run: npm run lint
+
+  deploy:
+    # Enable with repo variable DEPLOY_ENABLED=true (Settings > Secrets and variables > Actions > Variables).
+    if: github.event_name == 'push' && vars.DEPLOY_ENABLED == 'true'
+    needs: quality-gate
+    runs-on: ubuntu-24.04 # x86_64, matches the t3 instance: native build, no QEMU
+    timeout-minutes: 30
+    permissions:
+      id-token: write
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: arn:aws:iam::${{ env.AWS_ACCOUNT_ID }}:role/${{ env.DEPLOY_ROLE }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      - id: ecr
+        uses: aws-actions/amazon-ecr-login@v2
+
+      - uses: docker/setup-buildx-action@v3
+
+      - name: Build and push app image
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          target: runner
+          push: true
+          provenance: false
+          tags: |
+            ${{ steps.ecr.outputs.registry }}/${{ env.ECR_REPOSITORY }}:app-${{ github.sha }}
+            ${{ steps.ecr.outputs.registry }}/${{ env.ECR_REPOSITORY }}:app-latest
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+      - name: Build and push migrate/tools image
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          target: tools
+          push: true
+          provenance: false
+          tags: ${{ steps.ecr.outputs.registry }}/${{ env.ECR_REPOSITORY }}:tools-${{ github.sha }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+      - name: Deploy to EC2 via SSM
+        env:
+          REGISTRY: ${{ steps.ecr.outputs.registry }}
+        run: |
+          set -euo pipefail
+          APP_IMAGE="$REGISTRY/$ECR_REPOSITORY:app-$GITHUB_SHA"
+          TOOLS_IMAGE="$REGISTRY/$ECR_REPOSITORY:tools-$GITHUB_SHA"
+
+          # Ship compose/Caddy/deploy script from git (single source of truth), then run the deploy.
+          SCRIPT=$(cat <<SCRIPT_EOF
+          set -euo pipefail
+          cd $DEPLOY_DIR
+          echo '$(base64 -w0 docker-compose.yml)' | base64 -d > docker-compose.yml
+          echo '$(base64 -w0 Caddyfile)' | base64 -d > Caddyfile
+          echo '$(base64 -w0 deploy/deploy.sh)' | base64 -d > deploy.sh
+          chown ubuntu:ubuntu docker-compose.yml Caddyfile deploy.sh
+          chmod 755 deploy.sh
+          APP_IMAGE='$APP_IMAGE' TOOLS_IMAGE='$TOOLS_IMAGE' ECR_REGISTRY='$REGISTRY' AWS_REGION='$AWS_REGION' ./deploy.sh
+          SCRIPT_EOF
+          )
+          jq -n --arg s "$SCRIPT" '{commands: [$s], executionTimeout: ["1200"]}' > ssm-params.json
+
+          CMD_ID=$(aws ssm send-command \
+            --instance-ids "$INSTANCE_ID" \
+            --document-name AWS-RunShellScript \
+            --comment "deploy ${GITHUB_SHA::12}" \
+            --parameters file://ssm-params.json \
+            --query 'Command.CommandId' --output text)
+          echo "SSM command: $CMD_ID"
+
+          STATUS=Pending
+          for _ in $(seq 1 240); do
+            sleep 5
+            STATUS=$(aws ssm get-command-invocation --command-id "$CMD_ID" --instance-id "$INSTANCE_ID" \
+              --query Status --output text 2>/dev/null || echo Pending)
+            case "$STATUS" in Success|Failed|Cancelled|TimedOut|Cancelling) break ;; esac
+          done
+
+          OUT=$(aws ssm get-command-invocation --command-id "$CMD_ID" --instance-id "$INSTANCE_ID" \
+            --query '[StandardOutputContent,StandardErrorContent]' --output text || true)
+          {
+            echo "### Deploy ${GITHUB_SHA::12} -> $STATUS"
+            echo '```'
+            echo "$OUT" | tail -n 60
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+          echo "$OUT" | tail -n 60
+          [ "$STATUS" = "Success" ] || { echo "Deploy finished with status: $STATUS"; exit 1; }
+
+      - name: Public health check
+        run: |
+          for i in $(seq 1 12); do
+            code=$(curl -s -o /dev/null -w '%{http_code}' --max-time 10 "${{ vars.APP_HEALTH_URL || 'http://65.0.199.224' }}/api/auth/csrf" || true)
+            [ "$code" = "200" ] && { echo "healthy"; exit 0; }
+            sleep 5
+          done
+          echo "Health check failed (last HTTP $code)"; exit 1

@@ -1,69 +1,135 @@
-import Image from "next/image";
+import Link from 'next/link';
+import { prisma } from '@/lib/prisma';
+import { redirect } from 'next/navigation';
+import { requirePageAccess } from '@/lib/guards';
+import { homeFor, type RoleName } from '@/lib/permissions';
 
-export default function Home() {
+export default async function Sitemap() {
+  const user = await requirePageAccess('/');
+  const home = homeFor(user.role as RoleName);
+  if (home !== '/') redirect(home); // each non-admin role lands on its own home
+  // Grab a sample project ID so we can generate valid links to the dynamic pages
+  const project = await prisma.item.findFirst({ where: { type: 'PROJECT' } });
+  const sampleProjectId = project?.id || 'fake-id';
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <div className="w-full min-h-screen bg-[#F2EEE5] text-[#121519] font-sans p-10 flex flex-col items-center" style={{ fontFamily: "'Hanken Grotesk', sans-serif" }}>
+      <div className="max-w-3xl w-full bg-white rounded-2xl p-10 shadow-lg border border-[#DDD9CE] flex flex-col gap-8">
+        
+        <div className="flex flex-col gap-2 border-b border-[#E6E0D3] pb-6">
+          <div className="font-extrabold text-[40px] tracking-wide uppercase" style={{ fontFamily: "'Big Shoulders Display', sans-serif" }}>
+            NSDE Delivery Platform (Khel Setu)
+          </div>
+          <div className="text-lg text-[#5A5E63]">
+            Site Directory & Role Launchpad
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          
+          {/* Leadership & Admins */}
+          <div className="flex flex-col gap-4">
+            <h2 className="font-bold text-[22px] uppercase text-[#A8411F]" style={{ fontFamily: "'Big Shoulders Display', sans-serif" }}>Leadership & Admins</h2>
+            <div className="flex flex-col gap-3">
+              <Link href="/leadership" className="p-4 rounded-xl border border-[#DDD9CE] hover:bg-[#F2EEE5] transition-colors flex flex-col gap-1">
+                <span className="font-bold text-[17px]">The Track</span>
+                <span className="text-sm text-[#5A5E63]">High-level view of all projects and overall progress.</span>
+              </Link>
+              <Link href="/snapshot" className="p-4 rounded-xl border border-[#DDD9CE] hover:bg-[#F2EEE5] transition-colors flex flex-col gap-1">
+                <span className="font-bold text-[17px]">Daily Snapshot (Printable)</span>
+                <span className="text-sm text-[#5A5E63]">Formatted for physical printing or PDF export.</span>
+              </Link>
+              <Link href="/import" className="p-4 rounded-xl border border-[#DDD9CE] hover:bg-[#F2EEE5] transition-colors flex flex-col gap-1">
+                <span className="font-bold text-[17px]">Excel Importer</span>
+                <span className="text-sm text-[#5A5E63]">Upload and diff the weekly Excel sheet from NeGD.</span>
+              </Link>
+            </div>
+          </div>
+
+          {/* Project Leads */}
+          <div className="flex flex-col gap-4">
+            <h2 className="font-bold text-[22px] uppercase text-[#A8411F]" style={{ fontFamily: "'Big Shoulders Display', sans-serif" }}>Project Leads (NeGD)</h2>
+            <div className="flex flex-col gap-3">
+              <Link href="/lead" className="p-4 rounded-xl border border-[#DDD9CE] hover:bg-[#F2EEE5] transition-colors flex flex-col gap-1">
+                <span className="font-bold text-[17px]">Lead Desk</span>
+                <span className="text-sm text-[#5A5E63]">Focused view on specific workstreams and hurdles.</span>
+              </Link>
+              <Link href={`/project/${sampleProjectId}`} className="p-4 rounded-xl border border-[#DDD9CE] hover:bg-[#F2EEE5] transition-colors flex flex-col gap-1">
+                <span className="font-bold text-[17px]">Project Details</span>
+                <span className="text-sm text-[#5A5E63]">Board, Timeline, Calendar, and Decisions.</span>
+              </Link>
+              <Link href={`/project/${sampleProjectId}/passport`} className="p-4 rounded-xl border border-[#DDD9CE] hover:bg-[#F2EEE5] transition-colors flex flex-col gap-1">
+                <span className="font-bold text-[17px]">Project Passport</span>
+                <span className="text-sm text-[#5A5E63]">Static metadata, access, environments, and readiness.</span>
+              </Link>
+              <Link href={`/project/${sampleProjectId}/documents`} className="p-4 rounded-xl border border-[#DDD9CE] hover:bg-[#F2EEE5] transition-colors flex flex-col gap-1">
+                <span className="font-bold text-[17px]">Documents</span>
+                <span className="text-sm text-[#5A5E63]">Version-controlled document preview module.</span>
+              </Link>
+            </div>
+          </div>
+
+          {/* Teammates */}
+          <div className="flex flex-col gap-4">
+            <h2 className="font-bold text-[22px] uppercase text-[#A8411F]" style={{ fontFamily: "'Big Shoulders Display', sans-serif" }}>Teammates</h2>
+            <div className="flex flex-col gap-3">
+              <Link href="/my-day" className="p-4 rounded-xl border border-[#DDD9CE] hover:bg-[#F2EEE5] transition-colors flex flex-col gap-1">
+                <span className="font-bold text-[17px]">My Day (Mobile First)</span>
+                <span className="text-sm text-[#5A5E63]">Daily task management, logging stuck items, and wrap-up.</span>
+              </Link>
+              <Link href="/privacy" className="p-4 rounded-xl border border-[#DDD9CE] hover:bg-[#F2EEE5] transition-colors flex flex-col gap-1">
+                <span className="font-bold text-[17px]">Privacy Dashboard</span>
+                <span className="text-sm text-[#5A5E63]">"What others see about me" privacy controls.</span>
+              </Link>
+            </div>
+          </div>
+
+          {/* Project Owners */}
+          <div className="flex flex-col gap-4">
+            <h2 className="font-bold text-[22px] uppercase text-[#A8411F]" style={{ fontFamily: "'Big Shoulders Display', sans-serif" }}>Project Owners (SAI)</h2>
+            <div className="flex flex-col gap-3">
+              <Link href="/owner-email" className="p-4 rounded-xl border border-[#DDD9CE] hover:bg-[#F2EEE5] transition-colors flex flex-col gap-1">
+                <span className="font-bold text-[17px]">Actionable Email (Sandbox)</span>
+                <span className="text-sm text-[#5A5E63]">Simulated magic link email to resolve blockers instantly.</span>
+              </Link>
+            </div>
+          </div>
+
+          {/* Accounts (admins only) */}
+          <div className="flex flex-col gap-4">
+            <h2 className="font-bold text-[22px] uppercase text-[#A8411F]" style={{ fontFamily: "'Big Shoulders Display', sans-serif" }}>Accounts</h2>
+            <div className="flex flex-col gap-3">
+              <Link href="/admin/users" className="p-4 rounded-xl border border-[#DDD9CE] hover:bg-[#F2EEE5] transition-colors flex flex-col gap-1">
+                <span className="font-bold text-[17px]">Team accounts</span>
+                <span className="text-sm text-[#5A5E63]">Create accounts for leadership, leads, teammates and SAI owners.</span>
+              </Link>
+              {user.role === 'SUPER_ADMIN' && (
+                <Link href="/admin/roles" className="p-4 rounded-xl border border-[#DDD9CE] hover:bg-[#F2EEE5] transition-colors flex flex-col gap-1">
+                  <span className="font-bold text-[17px]">Create role</span>
+                  <span className="text-sm text-[#5A5E63]">Create admin and super admin accounts.</span>
+                </Link>
+              )}
+            </div>
+          </div>
+
+          {/* Directory & Communication */}
+          <div className="flex flex-col gap-4">
+            <h2 className="font-bold text-[22px] uppercase text-[#A8411F]" style={{ fontFamily: "'Big Shoulders Display', sans-serif" }}>Team & Communications</h2>
+            <div className="flex flex-col gap-3">
+              <Link href="/directory" className="p-4 rounded-xl border border-[#DDD9CE] hover:bg-[#F2EEE5] transition-colors flex flex-col gap-1">
+                <span className="font-bold text-[17px]">People's Directory</span>
+                <span className="text-sm text-[#5A5E63]">Profiles, resumes, and skills tracking.</span>
+              </Link>
+            </div>
+          </div>
+
         </div>
-      </main>
+        
+        <div className="bg-[#121519] text-[#F2EEE5] p-5 rounded-xl text-center text-sm mt-4">
+          <strong>Tip:</strong> Press <kbd className="bg-white/20 px-2 py-0.5 rounded mx-1">Cmd + K</kbd> anywhere in the app to open Global Search.
+        </div>
+
+      </div>
     </div>
   );
 }

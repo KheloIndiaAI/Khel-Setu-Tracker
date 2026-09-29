@@ -1,0 +1,231 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  SUPER_ADMIN
+  LEADERSHIP
+  LEAD
+  TEAMMATE
+  OWNER
+  ADMIN
+}
+
+enum ItemType {
+  PROJECT
+  WORKSTREAM
+  TASK
+  SUBTASK
+}
+
+enum Status {
+  TO_DO
+  DOING
+  IN_REVIEW
+  ACCEPTED
+  LIVE
+}
+
+enum HurdleClearer {
+  TEAM
+  SAI_OR_PARTNER
+  UNOWNED
+}
+
+enum NoteType {
+  QUESTION
+  APPRECIATION
+  DECISION
+}
+
+enum Morale {
+  GOOD
+  OKAY
+  TOUGH
+}
+
+model Person {
+  id             String    @id @default(uuid())
+  email          String    @unique
+  passwordHash   String
+  name           String
+  role           Role
+  team           String?
+  failedAttempts Int       @default(0)
+  lockedUntil    DateTime?
+  
+  // Voluntary fields and visibility
+  birthday       DateTime?
+  birthdayVis    Boolean   @default(false)
+  interests      String?
+  interestsVis   Boolean   @default(false)
+  photoUrl       String?
+  photoVis       Boolean   @default(false)
+  workAnniv      DateTime?
+  workAnnivVis   Boolean   @default(false)
+  
+  // Professional Details
+  experience     String?
+  skills         String[]
+  education      String?
+  qualifications String[]
+  resumeUrl      String?
+
+  // Relationships
+  projects       Item[]    @relation("ProjectTeam")
+  leadingItems   Item[]    @relation("ItemLead")
+  ownedItems     Item[]    @relation("ItemOwner")
+  dayEntries     DayEntry[]
+  authoredNotes  Note[]    @relation("NoteAuthor")
+  documents      Document[]
+  decisions      Decision[]
+}
+
+model Mission {
+  id                 String   @id @default(uuid())
+  name               String
+  startDate          DateTime
+  targetDate         DateTime
+  originalTargetDate DateTime
+  createdAt          DateTime @default(now())
+}
+
+model Pillar {
+  id     String @id @default(uuid())
+  letter String @unique // A to I
+  name   String
+  items  Item[]
+}
+
+model Item {
+  id              String   @id @default(uuid())
+  title           String
+  type            ItemType
+  parentId        String?
+  parent          Item?    @relation("ItemHierarchy", fields: [parentId], references: [id])
+  children        Item[]   @relation("ItemHierarchy")
+  
+  ownerId         String?  // The person doing the work (usually team member)
+  ownerName       String?  // From Excel "Existing Team Assigned" if not yet a real user
+  
+  targetStartDate DateTime?
+  targetEndDate   DateTime?
+  status          Status   @default(TO_DO)
+  weight          Int      @default(1) // S=1, M=2, L=3, or equal weights
+  
+  parked          Boolean  @default(false)
+  parkedReason    String?
+  
+  evidenceLinks   String[] // Array of URLs
+  
+  // Only for Projects
+  pillarId        String?
+  pillar          Pillar?  @relation(fields: [pillarId], references: [id])
+  vaultLink       String?
+  
+  leadId          String?
+  lead            Person?  @relation("ItemLead", fields: [leadId], references: [id])
+  
+  saiOwnerId      String?
+  saiOwner        Person?  @relation("ItemOwner", fields: [saiOwnerId], references: [id])
+  
+  team            Person[] @relation("ProjectTeam")
+  
+  stageGates      StageGate[]
+  hurdles         Hurdle[]
+  notes           Note[]
+  documents       Document[]
+  decisions       Decision[] @relation("DecisionItems")
+}
+
+model StageGate {
+  id            String    @id @default(uuid())
+  workstreamId  String
+  workstream    Item      @relation(fields: [workstreamId], references: [id])
+  name          String    // BRD, Design, Development, QA, Deployment
+  done          Boolean   @default(false)
+  date          DateTime?
+  evidenceLink  String?
+}
+
+model DayEntry {
+  id          String    @id @default(uuid())
+  personId    String
+  person      Person    @relation(fields: [personId], references: [id])
+  date        DateTime  @db.Date
+  startTime   DateTime
+  wrapUpTime  DateTime?
+  tasksPicked String[]  // Array of Item IDs
+  morale      Morale?
+}
+
+model Hurdle {
+  id            String         @id @default(uuid())
+  itemId        String
+  item          Item           @relation(fields: [itemId], references: [id])
+  text          String
+  whoClears     HurdleClearer
+  ownerNameBody String
+  openedAt      DateTime       @default(now())
+  firstResponse DateTime?
+  closedAt      DateTime?
+}
+
+model Note {
+  id          String   @id @default(uuid())
+  itemId      String
+  item        Item     @relation(fields: [itemId], references: [id])
+  authorId    String
+  author      Person   @relation("NoteAuthor", fields: [authorId], references: [id])
+  type        NoteType
+  text        String
+  recipients  String[] // Array of Person IDs (always copies the lead)
+  createdAt   DateTime @default(now())
+}
+
+model Decision {
+  id            String   @id @default(uuid())
+  text          String
+  decidedById   String
+  decidedBy     Person   @relation(fields: [decidedById], references: [id])
+  date          DateTime @default(now())
+  reason        String
+  affectedItems Item[]   @relation("DecisionItems")
+}
+
+model Document {
+  id           String   @id @default(uuid())
+  itemId       String
+  item         Item     @relation(fields: [itemId], references: [id])
+  fileName     String
+  fileUrl      String
+  version      Int      @default(1)
+  approved     Boolean  @default(false)
+  uploadedById String
+  uploadedBy   Person   @relation(fields: [uploadedById], references: [id])
+  createdAt    DateTime @default(now())
+}
+
+model DailySnapshot {
+  id         String   @id @default(uuid())
+  date       DateTime @db.Date
+  plannedPct Float
+  actualPct  Float
+  scopeTotal Int
+  projectId  String?  // Null for mission level
+}
+
+model ActivityLog {
+  id        String   @id @default(uuid())
+  who       String
+  what      String
+  itemId    String?
+  before    Json?
+  after     Json?
+  createdAt DateTime @default(now())
+}

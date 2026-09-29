@@ -1,0 +1,78 @@
+# Local:       docker compose up -d db          (then npm run dev on the host)
+# Full stack:  docker compose up -d --build     (db -> migrate -> app)
+# With HTTPS:  docker compose --profile proxy up -d --build   (needs APP_DOMAIN, see .env.example)
+# Seed once:   docker compose run --rm migrate npx prisma db seed
+# CI/CD:       the pipeline exports APP_IMAGE / TOOLS_IMAGE (ECR tags) and runs deploy/deploy.sh on the VM.
+#              Locally those are unset, so the ':local' names above are built from the Dockerfile.
+services:
+  db:
+    image: postgres:15-alpine
+    restart: always
+    environment:
+      POSTGRES_USER: khelsetu
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-khelsetu_password}
+      POSTGRES_DB: khelsetu
+      TZ: Asia/Kolkata
+    ports:
+      - '127.0.0.1:5432:5432' # loopback only: never expose Postgres publicly
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U khelsetu -d khelsetu']
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  # One-off: applies prisma/migrations, then exits. Also used for seeding.
+  migrate:
+    image: ${TOOLS_IMAGE:-khel-setu-migrate:local}
+    build:
+      context: .
+      target: tools
+    restart: 'no'
+    environment:
+      DATABASE_URL: postgresql://khelsetu:${POSTGRES_PASSWORD:-khelsetu_password}@db:5432/khelsetu?schema=public
+    depends_on:
+      db:
+        condition: service_healthy
+
+  app:
+    image: ${APP_IMAGE:-khel-setu-app:local}
+    build:
+      context: .
+      target: runner
+    restart: always
+    ports:
+      - '127.0.0.1:3000:3000' # reachable from the host; public traffic goes through the proxy
+    environment:
+      DATABASE_URL: postgresql://khelsetu:${POSTGRES_PASSWORD:-khelsetu_password}@db:5432/khelsetu?schema=public
+      AUTH_SECRET: ${AUTH_SECRET:?Set AUTH_SECRET in .env (openssl rand -base64 32)}
+      AUTH_URL: ${AUTH_URL:-http://localhost:3000}
+      AUTH_TRUST_HOST: 'true'
+      CRON_SECRET: ${CRON_SECRET:-}
+      TZ: Asia/Kolkata
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+
+  # Optional HTTPS reverse proxy (automatic Let's Encrypt certificate).
+  caddy:
+    image: caddy:2-alpine
+    profiles: ['proxy']
+    restart: always
+    ports:
+      - '80:80'
+      - '443:443'
+    environment:
+      APP_DOMAIN: ${APP_DOMAIN:?Set APP_DOMAIN in .env}
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    depends_on:
+      - app
+
+volumes:
+  db_data:
+  caddy_data:
+  caddy_config:
