@@ -15,6 +15,11 @@ export function isRole(value: unknown): value is RoleName {
   return typeof value === 'string' && (ROLES as readonly string[]).includes(value);
 }
 
+/** Who may edit or delete tracks, workstreams and tasks: the Super Admin (the OSD login) only. */
+export function canManageItems(role: string | null | undefined): boolean {
+  return role === 'SUPER_ADMIN';
+}
+
 /** Roles an actor is allowed to create. SUPER_ADMIN: ADMIN/SUPER_ADMIN only. ADMIN: everything else. */
 export function creatableRoles(actorRole: string | null | undefined): readonly RoleName[] {
   if (actorRole === 'SUPER_ADMIN') return PRIVILEGED_ROLES;

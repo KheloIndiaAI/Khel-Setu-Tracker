@@ -3,9 +3,10 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import CommunicationThread from '@/components/CommunicationThread';
+import ItemActions from '@/components/ItemActions';
 import { useRouter } from 'next/navigation';
 
-export default function ProjectClient({ project, people }: any) {
+export default function ProjectClient({ project, people, canManage }: any) {
   const router = useRouter();
   const [activeTab, setActiveTab] = useState('Board');
   const [isAddingItem, setIsAddingItem] = useState(false);
@@ -111,6 +112,11 @@ export default function ProjectClient({ project, people }: any) {
              {gap < 0 && (
                <div className="py-2 px-3 rounded-lg bg-[#F7E1DD] text-[#9E2F24] font-semibold text-sm mb-1.5">Behind plan</div>
              )}
+             {canManage && (
+               <div className="mb-1.5">
+                 <ItemActions item={project} people={people} redirectAfterDelete="/leadership" />
+               </div>
+             )}
           </div>
         </div>
 
@@ -163,6 +169,7 @@ export default function ProjectClient({ project, people }: any) {
                   <div key={c.id} className="bg-white border border-[#DDD9CE] rounded-[10px] p-3 flex flex-col gap-2 shadow-sm">
                     <div className="text-sm font-semibold leading-[1.35]">{c.title}</div>
                     <div className="text-[13px] text-[#5C645F]">{c.workstreamName} &middot; {c.ownerName || 'Unassigned'}</div>
+                    {canManage && <ItemActions item={c} people={people} compact />}
                     {col.id !== 'LIVE' && (
                       <button className="mt-1 min-h-[44px] border border-[#121519] rounded-lg bg-white text-sm font-semibold text-[#121519] hover:bg-gray-50">
                         {col.id === 'TO_DO' ? 'Start' : (col.id === 'DOING' ? 'Send for review' : (col.id === 'IN_REVIEW' ? 'Accept as lead' : 'Mark live'))}
@@ -219,7 +226,10 @@ export default function ProjectClient({ project, people }: any) {
 
                return (
                  <div key={w.id} className="grid grid-cols-[300px_1fr] gap-4 items-center min-h-[44px] border-b border-[#EFECE3] text-sm">
-                   <span className="font-semibold">{w.title}</span>
+                   <span className="font-semibold flex items-center justify-between gap-2 py-1">
+                     <span>{w.title}</span>
+                     {canManage && <ItemActions item={w} people={people} compact />}
+                   </span>
                    <span className="relative h-[22px] block" style={{ background: 'linear-gradient(to right, transparent 33.7%, #EFECE3 33.7%, #EFECE3 33.9%, transparent 33.9%, transparent 67.4%, #EFECE3 67.4%, #EFECE3 67.6%, transparent 67.6%)' }}>
                      <span className="absolute top-[3px] h-[16px] rounded-[5px] block box-border" style={{ left: `${leftPct}%`, width: `${widthPct}%`, background: bar, border: borderStyle }}></span>
                      {todayPct >= 0 && (

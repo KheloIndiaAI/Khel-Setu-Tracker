@@ -4,8 +4,9 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useRouter } from 'next/navigation';
 import CommunicationThread from '@/components/CommunicationThread';
+import ItemActions from '@/components/ItemActions';
 
-export default function TrackClient({ projects, mission, headline, people }: any) {
+export default function TrackClient({ projects, mission, headline, people, canManage }: any) {
   const [selIndex, setSelIndex] = useState<number | null>(0);
   const router = useRouter();
   
@@ -218,6 +219,11 @@ export default function TrackClient({ projects, mission, headline, people }: any
                             >
                               + Add Item (Workstream/Task)
                             </button>
+                            {canManage && (
+                              <div className="mb-1">
+                                <ItemActions item={p} people={people} />
+                              </div>
+                            )}
                           </div>
                         </div>
                         
@@ -232,7 +238,7 @@ export default function TrackClient({ projects, mission, headline, people }: any
                               const wsPacer = 100; // Simplified
                               const gap = wsActual - wsPacer;
                               return (
-                                <div key={ws.id} className="grid grid-cols-[230px_1fr_60px] items-center h-[32px] border-b border-[#E2DCCF]">
+                                <div key={ws.id} className={`grid ${canManage ? 'grid-cols-[230px_1fr_60px_auto] gap-x-2' : 'grid-cols-[230px_1fr_60px]'} items-center min-h-[32px] border-b border-[#E2DCCF]`}>
                                   <span className="text-[13px] font-bold truncate pr-2 text-[#3A3E44]">{ws.title}</span>
                                   <span className="relative block h-[26px] my-[3px]" style={{ background: i % 2 === 0 ? '#B5472A' : '#A8411F' }}>
                                     <span className="absolute top-[3px] w-[20px] h-[20px] rounded-full border-2 border-dashed border-white box-border block opacity-70" style={{ left: `calc(${wsPacer * 0.92}% - 10px)` }}></span>
@@ -241,6 +247,7 @@ export default function TrackClient({ projects, mission, headline, people }: any
                                   <span className="font-mono text-[13px] font-bold text-right" style={{ color: gap >= 0 ? '#1F6B4A' : '#A8321F' }}>
                                     {gap >= 0 ? 'on pace' : gap}
                                   </span>
+                                  {canManage && <ItemActions item={ws} people={people} compact />}
                                 </div>
                               )
                             })}

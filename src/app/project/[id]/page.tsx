@@ -1,13 +1,14 @@
 import { requirePageAccess } from '@/lib/guards';
+import { canManageItems } from '@/lib/permissions';
 import { getProject } from '@/lib/data';
 import ProjectClient from './ProjectClient';
 import { prisma } from '@/lib/prisma';
 
 export default async function ProjectPage({ params }: { params: Promise<{ id: string }> }) {
-  await requirePageAccess('/project');
+  const user = await requirePageAccess('/project');
   const { id } = await params;
   const project = await getProject(id);
   const people = await prisma.person.findMany();
   
-  return <ProjectClient project={project} people={people} />;
+  return <ProjectClient project={project} people={people} canManage={canManageItems(user.role)} />;
 }

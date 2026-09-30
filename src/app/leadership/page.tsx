@@ -3,9 +3,10 @@ import TrackClient from './TrackClient';
 import { calculateMissionHeadline } from '@/lib/progress';
 import { prisma } from '@/lib/prisma';
 import { requirePageAccess } from '@/lib/guards';
+import { canManageItems } from '@/lib/permissions';
 
 export default async function LeadershipPage() {
-  await requirePageAccess('/leadership');
+  const user = await requirePageAccess('/leadership');
   const data = await getMissionData();
   const people = await prisma.person.findMany();
   
@@ -28,6 +29,7 @@ export default async function LeadershipPage() {
       mission={data.mission} 
       headline={{ ...headline, daysElapsed, totalDays }} 
       people={people}
+      canManage={canManageItems(user.role)}
     />
   );
 }

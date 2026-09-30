@@ -6,11 +6,14 @@ export async function getProjectsWithProgress(today: Date = new Date()) {
     where: { type: 'PROJECT' },
     include: {
       pillar: true,
+      team: { select: { id: true } },
       children: { // Workstreams
         include: {
+          team: { select: { id: true } },
           children: { // Tasks
             include: {
-              hurdles: true
+              hurdles: true,
+              team: { select: { id: true } }
             }
           }
         }
@@ -96,11 +99,14 @@ export async function getProject(id: string, today: Date = new Date()) {
     where: { id },
     include: {
       pillar: true,
+      team: { select: { id: true } },
       children: { // Workstreams
         include: {
+          team: { select: { id: true } },
           children: { // Tasks
             include: {
-              hurdles: true
+              hurdles: true,
+              team: { select: { id: true } }
             }
           }
         }
