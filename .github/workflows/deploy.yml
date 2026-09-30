@@ -139,11 +139,11 @@ jobs:
           echo "$OUT" | tail -n 60
           [ "$STATUS" = "Success" ] || { echo "Deploy finished with status: $STATUS"; exit 1; }
 
-      # Caddy redirects http -> https and serves a self-issued cert on a bare IP, so follow redirects (-L) and skip cert verification (-k): this only checks the app is up.
+      # The site is served over HTTPS at its domain (valid Let's Encrypt cert); override with the APP_HEALTH_URL repo variable.
       - name: Public health check
         run: |
           for i in $(seq 1 12); do
-            code=$(curl -skL -o /dev/null -w '%{http_code}' --max-time 10 "${{ vars.APP_HEALTH_URL || 'http://65.0.199.224' }}/api/auth/csrf" || true)
+            code=$(curl -sL -o /dev/null -w '%{http_code}' --max-time 10 "${{ vars.APP_HEALTH_URL || 'https://ks.ccki.in' }}/api/auth/csrf" || true)
             [ "$code" = "200" ] && { echo "healthy"; exit 0; }
             sleep 5
           done
