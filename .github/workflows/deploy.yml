@@ -6,8 +6,6 @@ name: CI/CD
 on:
   push:
     branches: [dev]
-  pull_request:
-    branches: [dev]
 
 concurrency:
   group: deploy-dev
@@ -48,7 +46,7 @@ jobs:
 
   deploy:
     # Enable with repo variable DEPLOY_ENABLED=true (Settings > Secrets and variables > Actions > Variables).
-    if: github.event_name == 'push' && vars.DEPLOY_ENABLED == 'true'
+    if: vars.DEPLOY_ENABLED == 'true'
     needs: quality-gate
     runs-on: ubuntu-24.04 # x86_64, matches the t3 instance: native build, no QEMU
     timeout-minutes: 30
