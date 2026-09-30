@@ -41,7 +41,13 @@ export default async function LoginPage({
     <div className="w-full min-h-screen bg-[#F2EEE5] text-[#121519] flex items-center justify-center p-6" style={{ fontFamily: "'Hanken Grotesk', sans-serif" }}>
       <form action={login} className="w-full max-w-sm bg-white rounded-2xl border border-[#DDD9CE] shadow-sm p-8 flex flex-col gap-4">
         <input type="hidden" name="callbackUrl" value={safePath(callbackUrl)} />
-        <div className="font-black text-[36px] uppercase leading-none" style={{ fontFamily: "'Big Shoulders Display', sans-serif" }}>NSDE Delivery</div>
+        <div className="flex items-start gap-3">
+          <svg aria-hidden="true" viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="shrink-0 mt-0.5">
+            <rect x="3" y="4" width="18" height="12" rx="2" />
+            <path d="M8 20h8M12 16v4" />
+          </svg>
+          <div className="font-black text-[36px] uppercase leading-none" style={{ fontFamily: "'Big Shoulders Display', sans-serif" }}>NSDE Delivery</div>
+        </div>
         <div className="text-[15px] text-[#3A3E44]">Sign in to continue.</div>
         <div className="flex flex-col gap-1.5">
           <label htmlFor="loginId" className="text-[13px] font-bold text-[#5A5E63]">Login ID</label>
