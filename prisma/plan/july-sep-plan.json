@@ -1,0 +1,2278 @@
+{
+  "tracks": [
+    {
+      "name": "Khel Setu - Identity Platform",
+      "pillar": "A",
+      "status": "DOING",
+      "parked": false,
+      "start": "2026-07-01",
+      "end": "2026-09-30",
+      "owner": "Mansi",
+      "workstreams": [
+        {
+          "title": "Onboarding of PE Teachers",
+          "status": "DOING",
+          "parked": false,
+          "parkedReason": null,
+          "start": "2026-07-01",
+          "end": "2026-09-16",
+          "owner": "Mansi",
+          "remarks": null,
+          "tasks": [
+            {
+              "row": 4,
+              "title": "1. Registration of Physical education teachers in NSRS using digilocker services",
+              "status": "LIVE",
+              "parked": false,
+              "parkedReason": null,
+              "start": "2026-07-01",
+              "end": "2026-07-31",
+              "owner": "Mansi",
+              "remarks": "Remarks: Deployed to Production\nRemarks from the SAI team: Deployed in Production.\nActual completion: 7 Jul 2026",
+              "blocked": null
+            },
+            {
+              "row": 5,
+              "title": "2. PE Teachers Profile creation in NSRS of PE Teachers - Personal and Education and other details to be filled",
+              "status": "LIVE",
+              "parked": false,
+              "parkedReason": null,
+              "start": "2026-07-01",
+              "end": "2026-07-31",
+              "owner": "Mansi",
+              "remarks": "Remarks: Deployed in Production.\nRemarks from the SAI team: Deployed in Production.\nActual completion: 31 Jul 2026",
+              "blocked": null
+            },
+            {
+              "row": 6,
+              "title": "3. Improvisations in the profile as suggested by LNIP",
+              "status": "TO_DO",
+              "parked": false,
+              "parkedReason": null,
+              "start": "2026-09-02",
+              "end": "2026-09-09",
+              "owner": null,
+              "remarks": null,
+              "blocked": null
+            },
+            {
+              "row": 7,
+              "title": "4. UDISE integration for PE teachers",
+              "status": "TO_DO",
+              "parked": false,
+              "parkedReason": null,
+              "start": null,
+              "end": null,
+              "owner": "Mansi",
+              "remarks": "Remarks: Mail sent by SAI to Ministry of Education for incorporating USIDE APIs",
+              "blocked": null
+            },
+            {
+              "row": 8,
+              "title": "5. PE teacher module enhancement – institute type selection, district filter, etc.",
+              "status": "DOING",
+              "parked": false,
+              "parkedReason": null,
+              "start": "2026-09-11",
+              "end": "2026-09-16",
+              "owner": "Mansi",
+              "remarks": "Remarks: Code Deployed to UAT",
+              "blocked": null
+            },
+            {
+              "row": 9,
+              "title": "DG Review Meeting",
+              "status": "TO_DO",
+              "parked": false,
+              "parkedReason": null,
+              "start": null,
+              "end": null,
+              "owner": null,
+              "remarks": null,
+              "blocked": null
+            },
+            {
+              "row": 10,
+              "title": "JS Review",
+              "status": "TO_DO",
+              "parked": false,
+              "parkedReason": null,
+              "start": null,
+              "end": null,
+              "owner": null,
+              "remarks": null,
+              "blocked": null
+            }
+          ]
+        },
+        {
+          "title": "Admin Dashboard",
+          "status": "LIVE",
+          "parked": false,
+          "parkedReason": null,
+          "start": "2026-07-01",
+          "end": "2026-09-09",
+          "owner": "Mansi",
+          "remarks": null,
+          "tasks": [
+            {
+              "row": 11,
+              "title": "1. All registration Data to be displayed in Admin Dshboard with all the information taken during registration process",
+              "status": "LIVE",
+              "parked": false,
+              "parkedReason": null,
+              "start": "2026-07-01",
+              "end": "2026-07-31",
+              "owner": "Mansi",
+              "remarks": "Remarks: Deployed in Production.\nRemarks from the SAI team: Deployed in Production.\nActual completion: 13 Aug 2026",
+              "blocked": null
+            },
+            {
+              "row": 12,
+              "title": "2. Improvisations in the Dashboard as suggested by LNIP",
+              "status": "LIVE",
+              "parked": false,
+              "parkedReason": null,
+              "start": "2026-09-02",
+              "end": "2026-09-09",
+              "owner": null,
+              "remarks": "Remarks: Deployed in Production.",
+              "blocked": null
+            }
+          ]
+        },
+        {
+          "title": "Onboarding (Tagging) of PCA in NSRS",
+          "status": "LIVE",
+          "parked": false,
+          "parkedReason": null,
+          "start": "2026-07-01",
+          "end": "2026-07-31",
+          "owner": "Mansi",
+          "remarks": null,
+          "tasks": [
+            {
+              "row": 13,
+              "title": "1. Mapping of PCA in NSRS and a tag to be put in NSRS in their profile",
+              "status": "LIVE",
+              "parked": false,
+              "parkedReason": null,
+              "start": "2026-07-01",
+              "end": "2026-07-31",
+              "owner": "Mansi",
+              "remarks": "Remarks: Deployed in Production.\nRemarks from the SAI team: Deployed in Production.\nActual completion: 31 Jul 2026",
+              "blocked": null
+            }
+          ]
+        },
+        {
+          "title": "Provision of Foreign Coaches",
+          "status": "LIVE",
+          "parked": false,
+          "parkedReason": null,
+          "start": "2026-07-01",
+          "end": "2026-07-31",
+          "owner": "Mansi",
+          "remarks": null,
+          "tasks": [
+            {
+              "row": 14,
+              "title": "1. Registration through mobile no to be introduced for foreign coaches in NSRS",
+              "status": "LIVE",
+              "parked": false,
+              "parkedReason": null,
+              "start": "2026-07-01",
+              "end": "2026-07-31",
+              "owner": "Mansi",
+              "remarks": "Remarks: Foreign Coach registration via mobile number has been deployed to production\nRemarks from the SAI team: Foreign Coach registration via mobile number has been deployed to staging",
+              "blocked": null
+            },
+            {
+              "row": 15,
+              "title": "2. Profile creation and updation",
+              "status": "LIVE",
+              "parked": false,
+              "parkedReason": null,
+              "start": "2026-07-01",
+              "end": "2026-07-31",
+              "owner": "Mansi",
+              "remarks": "Remarks: Deployed in Production.",
+              "blocked": null
+            }
+          ]
+        },
+        {
+          "title": "Provision of NRI Athlete",
+          "status": "TO_DO",
+          "parked": true,
+          "parkedReason": "NRI Athlete to be discussed internally. As discussed in the meeting dated 21 Aug 2026 with DD IT DIv. SAI, it is suggested to park this",
+          "start": "2026-07-01",
+          "end": "2026-08-31",
+          "owner": "Mansi",
+          "remarks": null,
+          "tasks": [
+            {
+              "row": 16,
+              "title": "1. Registration of NRI Athletes through mobile no or other sources to be introduced in NSRS (Sports Passport) to be applicable later",
+              "status": "TO_DO",
+              "parked": true,
+              "parkedReason": "NRI Athlete to be discussed internally. As discussed in the meeting dated 21 Aug 2026 with DD IT DIv. SAI, it is suggested to park this",
+              "start": "2026-07-01",
+              "end": "2026-08-31",
+              "owner": "Mansi",
+              "remarks": "Remarks: NRI Athlete to be discussed internally.\nAs discussed in the meeting dated 21 Aug 2026 with DD IT DIv. SAI, it is suggested to park this\nRemarks from the SAI team: Started To Create API for Registration, with no changes in Existing Data Capture",
+              "blocked": null
+            }
+          ]
+        },
+        {
+          "title": "Mapping of athletes, coaches, etc. with respective govt agencies (Army, Paramilitary, Railways, etc.)",
+          "status": "TO_DO",
+          "parked": true,
+          "parkedReason": "Mail sent to SAI for list on 10th September, 2026",
+          "start": null,
+          "end": null,
+          "owner": "Mansi",
+          "remarks": null,
+          "tasks": [
+            {
+              "row": 17,
+              "title": "List of registered athletes to be received from IT Division, then tagging will be done from backend",
+              "status": "TO_DO",
+              "parked": true,
+              "parkedReason": "Mail sent to SAI for list on 10th September, 2026",
+              "start": null,
+              "end": null,
+              "owner": "Mansi",
+              "remarks": "Remarks: Mail sent to SAI for list on 10th September, 2026",
+              "blocked": null
+            }
+          ]
+        },
+        {
+          "title": "Sport change of stakeholders",
+          "status": "DOING",
+          "parked": false,
+          "parkedReason": null,
+          "start": "2026-07-01",
+          "end": "2026-08-31",
+          "owner": "Mansi",
+          "remarks": null,
+          "tasks": [
+            {
+              "row": 18,
+              "title": "1. Impact analysis to the downstream applications - GMS, ACTC, AMS, etc.",
+              "status": "DOING",
+              "parked": false,
+              "parkedReason": null,
+              "start": "2026-08-27",
+              "end": "2026-08-31",
+              "owner": null,
+              "remarks": null,
+              "blocked": null
+            },
+            {
+              "row": 19,
+              "title": "2. Multiple sports selction and mapping in NSRS for athletes",
+              "status": "TO_DO",
+              "parked": false,
+              "parkedReason": null,
+              "start": "2026-07-01",
+              "end": "2026-07-31",
+              "owner": "Mansi",
+              "remarks": "Remarks: To be picked up later post impact analysis.",
+              "blocked": null
+            }
+          ]
+        },
+        {
+          "title": "Role change of stakeholders",
+          "status": "TO_DO",
+          "parked": true,
+          "parkedReason": "Discuss with IT Division to map the approving authority. To be picked up later post 12 Aug 2026, need disussion.",
+          "start": "2026-07-01",
+          "end": "2026-07-31",
+          "owner": "Mansi",
+          "remarks": null,
+          "tasks": [
+            {
+              "row": 20,
+              "title": "1. Role change of stakeholders like athlete to coach, coach to technical official in nsrs",
+              "status": "TO_DO",
+              "parked": true,
+              "parkedReason": "Discuss with IT Division to map the approving authority. To be picked up later post 12 Aug 2026, need disussion.",
+              "start": "2026-07-01",
+              "end": "2026-07-31",
+              "owner": "Mansi",
+              "remarks": "Remarks: Discuss with IT Division to map the approving authority. To be picked up later post 12 Aug 2026, need disussion.",
+              "blocked": null
+            }
+          ]
+        },
+        {
+          "title": "Athlete, Coach, Sports Science Data Filters",
+          "status": "LIVE",
+          "parked": false,
+          "parkedReason": null,
+          "start": "2026-08-12",
+          "end": "2026-08-15",
+          "owner": "Mansi",
+          "remarks": null,
+          "tasks": [
+            {
+              "row": 21,
+              "title": "1. Athlete - NSRS ID, Name, State, sport,Academy, KIA, TOPS (core and Developmental) Sanction, Aadhaar verified",
+              "status": "LIVE",
+              "parked": false,
+              "parkedReason": null,
+              "start": "2026-08-12",
+              "end": "2026-08-15",
+              "owner": "Mansi",
+              "remarks": "Remarks: Timeline has exceeded due to non availability of frontend developer at SAI, Also omendra has informed Antik sir regarding this.\nRemarks from the SAI team: Deployed in Production.\n(This row of the plan listed 4 sub tasks in one cell; these remarks cover all of them.)",
+              "blocked": null
+            },
+            {
+              "row": 21,
+              "title": "2. Coach - NSRSID, Name, Sports, Academy, State",
+              "status": "LIVE",
+              "parked": false,
+              "parkedReason": null,
+              "start": "2026-08-12",
+              "end": "2026-08-15",
+              "owner": "Mansi",
+              "remarks": null,
+              "blocked": null
+            },
+            {
+              "row": 21,
+              "title": "3. Sports scientist - NSRSID, Name, Category, Academy",
+              "status": "LIVE",
+              "parked": false,
+              "parkedReason": null,
+              "start": "2026-08-12",
+              "end": "2026-08-15",
+              "owner": "Mansi",
+              "remarks": null,
+              "blocked": null
+            },
+            {
+              "row": 21,
+              "title": "4. Academy - NSRS ID, Name, Sports, Type, Athlete(no and listing to be shown), Coachno and listing to be shown), Sports Scientistno and listing to be shown), STATE, KIAA",
+              "status": "LIVE",
+              "parked": false,
+              "parkedReason": null,
+              "start": "2026-08-12",
+              "end": "2026-08-15",
+              "owner": "Mansi",
+              "remarks": null,
+              "blocked": null
+            }
+          ]
+        },
+        {
+          "title": "Naming Convention",
+          "status": "DOING",
+          "parked": false,
+          "parkedReason": null,
+          "start": "2026-08-27",
+          "end": "2026-08-31",
+          "owner": null,
+          "remarks": null,
+          "tasks": [
+            {
+              "row": 22,
+              "title": "1. Change the Naming Convention (NSRS ID -> NSRS (Khel ID)",
+              "status": "DOING",
+              "parked": false,
+              "parkedReason": null,
+              "start": "2026-08-27",
+              "end": "2026-08-31",
+              "owner": null,
+              "remarks": null,
+              "blocked": null
+            }
+          ]
+        },
+        {
+          "title": "Onboarding of CDAC (AUA), SAI (as the Sub-AUA), NeGD as the System Integrator (SI) & Audit Compliance",
+          "status": "DOING",
+          "parked": false,
+          "parkedReason": null,
+          "start": "2026-07-01",
+          "end": "2026-07-31",
+          "owner": "Mansi",
+          "remarks": null,
+          "tasks": [
+            {
+              "row": 23,
+              "title": "1. Compliance sheet to be filled",
+              "status": "DOING",
+              "parked": false,
+              "parkedReason": null,
+              "start": "2026-07-01",
+              "end": "2026-07-31",
+              "owner": "Mansi",
+              "remarks": "Remarks: SAI IT Team currently on filling in the compliance sheet and making NSRS compliant as per the mentioned norms.\nRemarks from the SAI team: All the features are available on the staging server:\n\nVoice-enabled CAPTCHA has been implemented on the login page.\nPassword attempt limit (account lockout mechanism) has been implemented.\nUsers cannot reuse any of their last three passwords.\nIP address logging is currently in progress.\nPassword expiration has been set to 90 days. Additionally, if an academy administrator resets a user's password, the user will be required to change it upon their first login. The backend implementation is complete; the UI changes are pending.",
+              "blocked": null
+            },
+            {
+              "row": 24,
+              "title": "2. Security audit of the entire NSRS based on the complaince sheet",
+              "status": "DOING",
+              "parked": false,
+              "parkedReason": null,
+              "start": "2026-07-01",
+              "end": "2026-07-31",
+              "owner": "Mansi",
+              "remarks": null,
+              "blocked": null
+            },
+            {
+              "row": 25,
+              "title": "3. Implementation of adhaar APIs provided by CDAC",
+              "status": "TO_DO",
+              "parked": false,
+              "parkedReason": null,
+              "start": "2026-07-01",
+              "end": "2026-07-31",
+              "owner": "Mansi",
+              "remarks": null,
+              "blocked": null
+            }
+          ]
+        },
+        {
+          "title": "Whatsapp Integration Plan",
+          "status": "DOING",
+          "parked": false,
+          "parkedReason": null,
+          "start": "2026-09-09",
+          "end": "2026-09-10",
+          "owner": "Mansi",
+          "remarks": null,
+          "tasks": [
+            {
+              "row": 26,
+              "title": "Define Scope",
+              "status": "LIVE",
+              "parked": false,
+              "parkedReason": null,
+              "start": "2026-09-09",
+              "end": "2026-09-09",
+              "owner": "Mansi",
+              "remarks": "Remarks: Scope Document",
+              "blocked": null
+            },
+            {
+              "row": 27,
+              "title": "Prepare RFQ",
+              "status": "LIVE",
+              "parked": false,
+              "parkedReason": null,
+              "start": "2026-09-09",
+              "end": "2026-09-10",
+              "owner": "Mansi",
+              "remarks": "Remarks: RFQ",
+              "blocked": null
+            },
+            {
+              "row": 28,
+              "title": "Integration",
+              "status": "TO_DO",
+              "parked": false,
+              "parkedReason": null,
+              "start": null,
+              "end": null,
+              "owner": null,
+              "remarks": null,
+              "blocked": null
+            }
+          ]
+        },
+        {
+          "title": "Aadhaar e-KYC",
+          "status": "TO_DO",
+          "parked": false,
+          "parkedReason": null,
+          "start": "2026-07-01",
+          "end": "2026-08-31",
+          "owner": "Mansi",
+          "remarks": null,
+          "tasks": [
+            {
+              "row": 29,
+              "title": "1. Testing and implementation",
+              "status": "TO_DO",
+              "parked": false,
+              "parkedReason": null,
+              "start": "2026-07-01",
+              "end": "2026-08-31",
+              "owner": "Mansi",
+              "remarks": null,
+              "blocked": null
+            }
+          ]
+        },
+        {
+          "title": "Integration of DBT with NSRS",
+          "status": "TO_DO",
+          "parked": false,
+          "parkedReason": null,
+          "start": "2026-09-01",
+          "end": "2026-09-30",
+          "owner": "Mansi",
+          "remarks": null,
+          "tasks": [
+            {
+              "row": 30,
+              "title": "1. Migration of Existing DBT to new infra",
+              "status": "TO_DO",
+              "parked": false,
+              "parkedReason": null,
+              "start": "2026-09-01",
+              "end": "2026-09-30",
+              "owner": "Mansi",
+              "remarks": "Remarks: Infrastructure Procurement Bid Floated",
+              "blocked": null
+            }
+          ]
+        },
+        {
+          "title": "SSO implementation",
+          "status": "DOING",
+          "parked": false,
+          "parkedReason": null,
+          "start": "2026-07-01",
+          "end": "2026-07-31",
+          "owner": "Mansi",
+          "remarks": null,
+          "tasks": [
+            {
+              "row": 31,
+              "title": "1. Backend development for SSO",
+              "status": "LIVE",
+              "parked": false,
+              "parkedReason": null,
+              "start": "2026-07-01",
+              "end": "2026-07-31",
+              "owner": "Mansi",
+              "remarks": "Remarks: Backend implementation completed\nActual completion: 30 Jul 2026",
+              "blocked": null
+            },
+            {
+              "row": 32,
+              "title": "2. Login design and development",
+              "status": "LIVE",
+              "parked": false,
+              "parkedReason": null,
+              "start": "2026-07-01",
+              "end": "2026-07-31",
+              "owner": "Mansi",
+              "remarks": "Actual completion: 31 Jul 2026",
+              "blocked": null
+            },
+            {
+              "row": 33,
+              "title": "3. Profile design and development",
+              "status": "TO_DO",
+              "parked": false,
+              "parkedReason": null,
+              "start": "2026-07-01",
+              "end": "2026-07-31",
+              "owner": "Mansi",
+              "remarks": null,
+              "blocked": null
+            },
+            {
+              "row": 34,
+              "title": "4. Home Page design and development",
+              "status": "LIVE",
+              "parked": false,
+              "parkedReason": null,
+              "start": "2026-07-01",
+              "end": "2026-07-31",
+              "owner": "Mansi",
+              "remarks": "Actual completion: 31 Jul 2026",
+              "blocked": null
+            }
+          ]
+        },
+        {
+          "title": "RBAC implementation",
+          "status": "LIVE",
+          "parked": false,
+          "parkedReason": null,
+          "start": "2026-07-01",
+          "end": "2026-07-31",
+          "owner": "Mansi",
+          "remarks": null,
+          "tasks": [
+            {
+              "row": 35,
+              "title": "1. Defining Roles and Module Access Design",
+              "status": "LIVE",
+              "parked": false,
+              "parkedReason": null,
+              "start": "2026-07-01",
+              "end": "2026-07-31",
+              "owner": "Mansi",
+              "remarks": "Remarks: Backend implementation completed\nActual completion: 31 Jul 2026",
+              "blocked": null
+            },
+            {
+              "row": 36,
+              "title": "2. Backend development",
+              "status": "LIVE",
+              "parked": false,
+              "parkedReason": null,
+              "start": "2026-07-01",
+              "end": "2026-07-31",
+              "owner": "Mansi",
+              "remarks": "Actual completion: 31 Jul 2026",
+              "blocked": null
+            }
+          ]
+        },
+        {
+          "title": "Consent management",
+          "status": "DOING",
+          "parked": false,
+          "parkedReason": null,
+          "start": "2026-07-01",
+          "end": "2026-07-31",
+          "owner": "Mansi",
+          "remarks": null,
+          "tasks": [
+            {
+              "row": 37,
+              "title": "1.Record of consent of the Aadhaar number holder for authentication",
+              "status": "DOING",
+              "parked": false,
+              "parkedReason": null,
+              "start": "2026-07-01",
+              "end": "2026-07-31",
+              "owner": "Mansi",
+              "remarks": null,
+              "blocked": null
+            },
+            {
+              "row": 38,
+              "title": "2.Record of disclosure of information to the Aadhaar number holder at the time of authentication.",
+              "status": "DOING",
+              "parked": false,
+              "parkedReason": null,
+              "start": "2026-07-01",
+              "end": "2026-07-31",
+              "owner": "Mansi",
+              "remarks": null,
+              "blocked": null
+            },
+            {
+              "row": 39,
+              "title": "3.Child consent Form",
+              "status": "DOING",
+              "parked": false,
+              "parkedReason": null,
+              "start": "2026-07-01",
+              "end": "2026-07-31",
+              "owner": "Mansi",
+              "remarks": null,
+              "blocked": null
+            },
+            {
+              "row": 40,
+              "title": "4.Consent logs",
+              "status": "DOING",
+              "parked": false,
+              "parkedReason": null,
+              "start": "2026-07-01",
+              "end": "2026-07-31",
+              "owner": "Mansi",
+              "remarks": null,
+              "blocked": null
+            },
+            {
+              "row": 41,
+              "title": "5. Mechanism to communicate consent with people with disability",
+              "status": "DOING",
+              "parked": false,
+              "parkedReason": null,
+              "start": "2026-07-01",
+              "end": "2026-07-31",
+              "owner": "Mansi",
+              "remarks": null,
+              "blocked": null
+            },
+            {
+              "row": 42,
+              "title": "6. Local language consent content",
+              "status": "DOING",
+              "parked": false,
+              "parkedReason": null,
+              "start": "2026-07-01",
+              "end": "2026-07-31",
+              "owner": "Mansi",
+              "remarks": null,
+              "blocked": null
+            }
+          ]
+        },
+        {
+          "title": "User Management",
+          "status": "LIVE",
+          "parked": false,
+          "parkedReason": null,
+          "start": "2026-07-01",
+          "end": "2026-07-31",
+          "owner": "Mansi",
+          "remarks": null,
+          "tasks": [
+            {
+              "row": 43,
+              "title": "1. Implementation of User Management",
+              "status": "LIVE",
+              "parked": false,
+              "parkedReason": null,
+              "start": "2026-07-01",
+              "end": "2026-07-31",
+              "owner": "Mansi",
+              "remarks": "Actual completion: 31 Jul 2026",
+              "blocked": null
+            }
+          ]
+        },
+        {
+          "title": "Data de-duplication",
+          "status": "TO_DO",
+          "parked": false,
+          "parkedReason": null,
+          "start": "2026-07-01",
+          "end": "2026-07-31",
+          "owner": "Mansi",
+          "remarks": null,
+          "tasks": [
+            {
+              "row": 44,
+              "title": "1. Data dump extraction and identification of parameters on which duplication can be removed",
+              "status": "TO_DO",
+              "parked": false,
+              "parkedReason": null,
+              "start": "2026-07-01",
+              "end": "2026-07-31",
+              "owner": "Mansi",
+              "remarks": "Remarks: Should this be done on NSRS or NSDE? To be confirmed with Vinay Sir. As per Mayank, this can not be achieved by 31 July",
+              "blocked": null
+            }
+          ]
+        },
+        {
+          "title": "Notification Services",
+          "status": "DOING",
+          "parked": false,
+          "parkedReason": null,
+          "start": "2026-08-01",
+          "end": "2026-08-31",
+          "owner": "Mansi",
+          "remarks": null,
+          "tasks": [
+            {
+              "row": 45,
+              "title": "1. SMTP details from CDAC",
+              "status": "DOING",
+              "parked": false,
+              "parkedReason": null,
+              "start": "2026-08-01",
+              "end": "2026-08-31",
+              "owner": "Mansi",
+              "remarks": null,
+              "blocked": null
+            }
+          ]
+        },
+        {
+          "title": "Data Migration",
+          "status": "TO_DO",
+          "parked": false,
+          "parkedReason": null,
+          "start": null,
+          "end": null,
+          "owner": null,
+          "remarks": null,
+          "tasks": []
+        },
+        {
+          "title": "Workflow Engine",
+          "status": "DOING",
+          "parked": false,
+          "parkedReason": null,
+          "start": "2026-08-01",
+          "end": "2026-08-21",
+          "owner": "Mansi",
+          "remarks": null,
+          "tasks": [
+            {
+              "row": 47,
+              "title": "1. Approach Note for Worklfow Engine",
+              "status": "LIVE",
+              "parked": false,
+              "parkedReason": null,
+              "start": "2026-08-01",
+              "end": "2026-08-15",
+              "owner": "Mansi",
+              "remarks": "Actual completion: 15 Aug 2026",
+              "blocked": null
+            },
+            {
+              "row": 48,
+              "title": "2. Development for Workflow Engine as a service",
+              "status": "DOING",
+              "parked": false,
+              "parkedReason": null,
+              "start": "2026-08-18",
+              "end": "2026-08-21",
+              "owner": "Mansi",
+              "remarks": null,
+              "blocked": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Training Centre Management",
+      "pillar": "B",
+      "status": "DOING",
+      "parked": false,
+      "start": "2026-07-01",
+      "end": "2026-09-30",
+      "owner": "Gaurav",
+      "workstreams": [
+        {
+          "title": "Centre onboarding & Accrediation",
+          "status": "DOING",
+          "parked": false,
+          "parkedReason": null,
+          "start": "2026-07-01",
+          "end": "2026-07-31",
+          "owner": "Gaurav",
+          "remarks": null,
+          "tasks": [
+            {
+              "row": 49,
+              "title": "1. Centre onboarding & Accrediation",
+              "status": "DOING",
+              "parked": false,
+              "parkedReason": null,
+              "start": "2026-07-01",
+              "end": "2026-07-31",
+              "owner": "Gaurav",
+              "remarks": "Remarks: Gaurav to start BRD from 31 Aug 2026 along with Piyush",
+              "blocked": null
+            }
+          ]
+        },
+        {
+          "title": "Talent Identification - Admission Process",
+          "status": "DOING",
+          "parked": false,
+          "parkedReason": null,
+          "start": "2026-08-01",
+          "end": "2026-08-31",
+          "owner": "Gaurav",
+          "remarks": null,
+          "tasks": [
+            {
+              "row": 50,
+              "title": "1. Admission Process - Athletes Induction and weedout to be done by ARM, Centre head, Athletes, Administration( AD/DD/Director/ED)",
+              "status": "DOING",
+              "parked": false,
+              "parkedReason": null,
+              "start": "2026-08-01",
+              "end": "2026-08-31",
+              "owner": "Gaurav",
+              "remarks": "Remarks: BRD to be finalized and signed - off by 7 Aug 2026",
+              "blocked": null
+            }
+          ]
+        },
+        {
+          "title": "Counselling process for KIA /E- KIA",
+          "status": "TO_DO",
+          "parked": true,
+          "parkedReason": "Client has requested to Park this since the policies and workflows are awaited from their side",
+          "start": "2026-09-01",
+          "end": "2026-09-30",
+          "owner": "Gaurav",
+          "remarks": null,
+          "tasks": [
+            {
+              "row": 51,
+              "title": "1. Centrewise performance report of athletes",
+              "status": "TO_DO",
+              "parked": true,
+              "parkedReason": "Client has requested to Park this since the policies and workflows are awaited from their side",
+              "start": "2026-09-01",
+              "end": "2026-09-30",
+              "owner": "Gaurav",
+              "remarks": "Remarks: Client has requested to Park this since the policies and workflows are awaited from their side",
+              "blocked": null
+            },
+            {
+              "row": 52,
+              "title": "2. Academy allotment/ transfer request",
+              "status": "TO_DO",
+              "parked": true,
+              "parkedReason": null,
+              "start": "2026-09-01",
+              "end": "2026-09-30",
+              "owner": "Gaurav",
+              "remarks": null,
+              "blocked": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "ACTC",
+      "pillar": "C",
+      "status": "DOING",
+      "parked": false,
+      "start": "2026-07-01",
+      "end": "2026-09-01",
+      "owner": "Gaurav",
+      "workstreams": [
+        {
+          "title": "ACTC improvisations",
+          "status": "TO_DO",
+          "parked": true,
+          "parkedReason": "No requirements have received from the client, a revamped version will be created at the later stage",
+          "start": "2026-07-01",
+          "end": "2026-07-31",
+          "owner": "Gaurav",
+          "remarks": null,
+          "tasks": [
+            {
+              "row": 53,
+              "title": "1. Stakeholder consultation based on new changes to be done in portal",
+              "status": "TO_DO",
+              "parked": true,
+              "parkedReason": "No requirements have received from the client, a revamped version will be created at the later stage",
+              "start": "2026-07-01",
+              "end": "2026-07-31",
+              "owner": "Gaurav",
+              "remarks": "Remarks: No requirements have received from the client, a revamped version will be created at the later stage\n(This row of the plan listed 3 sub tasks in one cell; these remarks cover all of them.)",
+              "blocked": null
+            },
+            {
+              "row": 53,
+              "title": "2. Calendar and Proposal changes",
+              "status": "TO_DO",
+              "parked": true,
+              "parkedReason": "No requirements have received from the client, a revamped version will be created at the later stage",
+              "start": "2026-07-01",
+              "end": "2026-07-31",
+              "owner": "Gaurav",
+              "remarks": null,
+              "blocked": null
+            },
+            {
+              "row": 53,
+              "title": "3. Sanctions updation",
+              "status": "TO_DO",
+              "parked": true,
+              "parkedReason": "No requirements have received from the client, a revamped version will be created at the later stage",
+              "start": "2026-07-01",
+              "end": "2026-07-31",
+              "owner": "Gaurav",
+              "remarks": null,
+              "blocked": null
+            }
+          ]
+        },
+        {
+          "title": "NSF Certificates Templates",
+          "status": "DOING",
+          "parked": false,
+          "parkedReason": null,
+          "start": "2026-08-26",
+          "end": "2026-09-01",
+          "owner": null,
+          "remarks": null,
+          "tasks": [
+            {
+              "row": 54,
+              "title": "1. Excel template for NSF to upload data of athletes",
+              "status": "DOING",
+              "parked": false,
+              "parkedReason": null,
+              "start": "2026-08-26",
+              "end": "2026-09-01",
+              "owner": null,
+              "remarks": null,
+              "blocked": null
+            },
+            {
+              "row": 54,
+              "title": "2. API integration with digilocker",
+              "status": "DOING",
+              "parked": false,
+              "parkedReason": null,
+              "start": "2026-08-26",
+              "end": "2026-09-01",
+              "owner": null,
+              "remarks": null,
+              "blocked": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Games Management System (GMS)",
+      "pillar": "C",
+      "status": "DOING",
+      "parked": false,
+      "start": "2026-07-01",
+      "end": "2026-11-30",
+      "owner": "Yogita",
+      "workstreams": [
+        {
+          "title": "Asian Games and CWG GMS improvisations",
+          "status": "LIVE",
+          "parked": false,
+          "parkedReason": null,
+          "start": "2026-07-01",
+          "end": "2026-07-20",
+          "owner": "Yogita",
+          "remarks": null,
+          "tasks": [
+            {
+              "row": 55,
+              "title": "1. HTML creation based on the excel provided by divsion",
+              "status": "LIVE",
+              "parked": false,
+              "parkedReason": null,
+              "start": "2026-07-01",
+              "end": "2026-07-20",
+              "owner": "Yogita",
+              "remarks": null,
+              "blocked": null
+            },
+            {
+              "row": 55,
+              "title": "2. Appication creation based on the html approval by division",
+              "status": "LIVE",
+              "parked": false,
+              "parkedReason": null,
+              "start": "2026-07-01",
+              "end": "2026-07-20",
+              "owner": "Yogita",
+              "remarks": null,
+              "blocked": null
+            }
+          ]
+        },
+        {
+          "title": "Khelo India Web",
+          "status": "DOING",
+          "parked": false,
+          "parkedReason": null,
+          "start": "2026-09-01",
+          "end": "2026-11-30",
+          "owner": "Yogita",
+          "remarks": null,
+          "tasks": [
+            {
+              "row": 56,
+              "title": "1. Setup of GMS based on the new games",
+              "status": "DOING",
+              "parked": false,
+              "parkedReason": null,
+              "start": "2026-09-01",
+              "end": "2026-11-30",
+              "owner": "Yogita",
+              "remarks": null,
+              "blocked": null
+            },
+            {
+              "row": 56,
+              "title": "2. TSR Integration and setup of scoring",
+              "status": "DOING",
+              "parked": false,
+              "parkedReason": null,
+              "start": "2026-09-01",
+              "end": "2026-11-30",
+              "owner": "Yogita",
+              "remarks": null,
+              "blocked": null
+            },
+            {
+              "row": 56,
+              "title": "3. ACT Module to be ready before the games",
+              "status": "DOING",
+              "parked": false,
+              "parkedReason": null,
+              "start": "2026-09-01",
+              "end": "2026-11-30",
+              "owner": "Yogita",
+              "remarks": null,
+              "blocked": null
+            }
+          ]
+        },
+        {
+          "title": "Khelo india Mobile App",
+          "status": "DOING",
+          "parked": false,
+          "parkedReason": null,
+          "start": "2026-09-01",
+          "end": "2026-11-30",
+          "owner": null,
+          "remarks": null,
+          "tasks": [
+            {
+              "row": 57,
+              "title": "1. Top medalist",
+              "status": "DOING",
+              "parked": false,
+              "parkedReason": null,
+              "start": "2026-09-01",
+              "end": "2026-11-30",
+              "owner": null,
+              "remarks": null,
+              "blocked": null
+            },
+            {
+              "row": 57,
+              "title": "2. Top home banner",
+              "status": "DOING",
+              "parked": false,
+              "parkedReason": null,
+              "start": "2026-09-01",
+              "end": "2026-11-30",
+              "owner": null,
+              "remarks": null,
+              "blocked": null
+            },
+            {
+              "row": 57,
+              "title": "3. Archery score screen",
+              "status": "DOING",
+              "parked": false,
+              "parkedReason": null,
+              "start": "2026-09-01",
+              "end": "2026-11-30",
+              "owner": null,
+              "remarks": null,
+              "blocked": null
+            },
+            {
+              "row": 57,
+              "title": "4. Bus Details",
+              "status": "DOING",
+              "parked": false,
+              "parkedReason": null,
+              "start": "2026-09-01",
+              "end": "2026-11-30",
+              "owner": null,
+              "remarks": null,
+              "blocked": null
+            },
+            {
+              "row": 57,
+              "title": "5. Catering",
+              "status": "DOING",
+              "parked": false,
+              "parkedReason": null,
+              "start": "2026-09-01",
+              "end": "2026-11-30",
+              "owner": null,
+              "remarks": null,
+              "blocked": null
+            },
+            {
+              "row": 57,
+              "title": "6. Grievance",
+              "status": "DOING",
+              "parked": false,
+              "parkedReason": null,
+              "start": "2026-09-01",
+              "end": "2026-11-30",
+              "owner": null,
+              "remarks": null,
+              "blocked": null
+            },
+            {
+              "row": 57,
+              "title": "7. App logo according to app colors theme",
+              "status": "DOING",
+              "parked": false,
+              "parkedReason": null,
+              "start": "2026-09-01",
+              "end": "2026-11-30",
+              "owner": null,
+              "remarks": null,
+              "blocked": null
+            },
+            {
+              "row": 57,
+              "title": "8. CDM/UCM login",
+              "status": "DOING",
+              "parked": false,
+              "parkedReason": null,
+              "start": "2026-09-01",
+              "end": "2026-11-30",
+              "owner": null,
+              "remarks": null,
+              "blocked": null
+            },
+            {
+              "row": 57,
+              "title": "9. Kit distribution dashboard flow",
+              "status": "DOING",
+              "parked": false,
+              "parkedReason": null,
+              "start": "2026-09-01",
+              "end": "2026-11-30",
+              "owner": null,
+              "remarks": null,
+              "blocked": null
+            },
+            {
+              "row": 57,
+              "title": "10. Accred dashboard flow",
+              "status": "DOING",
+              "parked": false,
+              "parkedReason": null,
+              "start": "2026-09-01",
+              "end": "2026-11-30",
+              "owner": null,
+              "remarks": null,
+              "blocked": null
+            },
+            {
+              "row": 57,
+              "title": "11. Super admin flow",
+              "status": "DOING",
+              "parked": false,
+              "parkedReason": null,
+              "start": "2026-09-01",
+              "end": "2026-11-30",
+              "owner": null,
+              "remarks": null,
+              "blocked": null
+            },
+            {
+              "row": 57,
+              "title": "12. Accommodation manager related flow",
+              "status": "DOING",
+              "parked": false,
+              "parkedReason": null,
+              "start": "2026-09-01",
+              "end": "2026-11-30",
+              "owner": null,
+              "remarks": null,
+              "blocked": null
+            },
+            {
+              "row": 57,
+              "title": "13. Icon nav bar related",
+              "status": "DOING",
+              "parked": false,
+              "parkedReason": null,
+              "start": "2026-09-01",
+              "end": "2026-11-30",
+              "owner": null,
+              "remarks": null,
+              "blocked": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Grievance Redressal System",
+      "pillar": "D",
+      "status": "DOING",
+      "parked": false,
+      "start": "2026-06-01",
+      "end": "2026-09-30",
+      "owner": "Gaurav",
+      "workstreams": [
+        {
+          "title": "Call Centre Integration",
+          "status": "TO_DO",
+          "parked": false,
+          "parkedReason": null,
+          "start": "2026-08-01",
+          "end": "2026-09-30",
+          "owner": "Gaurav",
+          "remarks": null,
+          "tasks": [
+            {
+              "row": 58,
+              "title": "1. CRM Integration with the existing call centre",
+              "status": "TO_DO",
+              "parked": false,
+              "parkedReason": null,
+              "start": "2026-08-01",
+              "end": "2026-09-30",
+              "owner": "Gaurav",
+              "remarks": null,
+              "blocked": null
+            }
+          ]
+        },
+        {
+          "title": "Athlete to ARM workflow",
+          "status": "LIVE",
+          "parked": false,
+          "parkedReason": null,
+          "start": "2026-06-01",
+          "end": "2026-06-25",
+          "owner": "Gaurav",
+          "remarks": null,
+          "tasks": [
+            {
+              "row": 59,
+              "title": "1. Design creation of the flow",
+              "status": "LIVE",
+              "parked": false,
+              "parkedReason": null,
+              "start": "2026-06-01",
+              "end": "2026-06-25",
+              "owner": "Gaurav",
+              "remarks": null,
+              "blocked": null
+            },
+            {
+              "row": 59,
+              "title": "2. Athlete to ARM flow and back flow",
+              "status": "LIVE",
+              "parked": false,
+              "parkedReason": null,
+              "start": "2026-06-01",
+              "end": "2026-06-25",
+              "owner": "Gaurav",
+              "remarks": null,
+              "blocked": null
+            }
+          ]
+        },
+        {
+          "title": "Complete end to end Grievance modules for every SAI division specific",
+          "status": "TO_DO",
+          "parked": false,
+          "parkedReason": null,
+          "start": "2026-08-01",
+          "end": "2026-09-30",
+          "owner": "Gaurav",
+          "remarks": null,
+          "tasks": [
+            {
+              "row": 60,
+              "title": "1. Prepared the BRD and Detailed concept note on the grievance module and a PPT for the same",
+              "status": "TO_DO",
+              "parked": false,
+              "parkedReason": null,
+              "start": "2026-08-01",
+              "end": "2026-09-30",
+              "owner": "Gaurav",
+              "remarks": null,
+              "blocked": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Central Monitoring System",
+      "pillar": "D",
+      "status": "DOING",
+      "parked": false,
+      "start": "2026-08-01",
+      "end": "2026-09-30",
+      "owner": "Gaurav",
+      "workstreams": [
+        {
+          "title": "Monitoring System",
+          "status": "DOING",
+          "parked": false,
+          "parkedReason": null,
+          "start": "2026-08-01",
+          "end": "2026-09-30",
+          "owner": "Gaurav",
+          "remarks": null,
+          "tasks": [
+            {
+              "row": 61,
+              "title": "1. Meeting with Shambhoo sir, Regarding the Monitoring app process flows and prepared a HTML prototype of the Monitoring app",
+              "status": "DOING",
+              "parked": false,
+              "parkedReason": null,
+              "start": "2026-08-01",
+              "end": "2026-09-30",
+              "owner": "Gaurav",
+              "remarks": "Remarks from the SAI team: BRD to be shared by 10 Aug 2026.",
+              "blocked": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "MIS, Reports and Dashboard",
+      "pillar": "D",
+      "status": "LIVE",
+      "parked": false,
+      "start": "2026-07-01",
+      "end": "2026-07-31",
+      "owner": "Gaurav",
+      "workstreams": [
+        {
+          "title": "MIS Reports for Operations Division via RCMS",
+          "status": "LIVE",
+          "parked": false,
+          "parkedReason": null,
+          "start": "2026-07-01",
+          "end": "2026-07-31",
+          "owner": "Gaurav",
+          "remarks": null,
+          "tasks": [
+            {
+              "row": 62,
+              "title": "1.Meeting with the Ops division and showed them the HTML for the Monitoring system, and the Dashboard Documentation(FRD) is done for the same. RCMS Portal delivered to Ops Division on 31 July 2026 for User Acceptance Testing (UAT).",
+              "status": "LIVE",
+              "parked": false,
+              "parkedReason": null,
+              "start": "2026-07-01",
+              "end": "2026-07-31",
+              "owner": "Gaurav",
+              "remarks": "Remarks: This has been delivered to Ops Division on 31 July 2026, Demo has been given to DD & AD IT as well as Direcotor Ops Div (Shri. Manikant)\nImrovisations are being carried out as per DDG Ma'am feedback. Dev to be completed by 20 Aug 2026.\nActual completion: 31 Jul 2026\n(This row of the plan listed 10 sub tasks in one cell; these remarks cover all of them.)",
+              "blocked": null
+            },
+            {
+              "row": 62,
+              "title": "2.Demo/Walkthrough conducted for DD & AD IT and Director, Ops Division (Shri Manikant Sharma).",
+              "status": "LIVE",
+              "parked": false,
+              "parkedReason": null,
+              "start": "2026-07-01",
+              "end": "2026-07-31",
+              "owner": "Gaurav",
+              "remarks": null,
+              "blocked": null
+            },
+            {
+              "row": 62,
+              "title": "3.Improvements/enhancements initiated based on feedback received from DDG Ma’am, with development targeted for completion by 20 August 2026.",
+              "status": "LIVE",
+              "parked": false,
+              "parkedReason": null,
+              "start": "2026-07-01",
+              "end": "2026-07-31",
+              "owner": "Gaurav",
+              "remarks": null,
+              "blocked": null
+            },
+            {
+              "row": 62,
+              "title": "4.Meeting conducted with DDG, Ops Division on 7 September 2026 to review the implemented improvements. Further suggestions were provided, including:",
+              "status": "LIVE",
+              "parked": false,
+              "parkedReason": null,
+              "start": "2026-07-01",
+              "end": "2026-07-31",
+              "owner": "Gaurav",
+              "remarks": null,
+              "blocked": null
+            },
+            {
+              "row": 62,
+              "title": "5.Creation of a new Coach Profile template under Quarterly Templates.",
+              "status": "LIVE",
+              "parked": false,
+              "parkedReason": null,
+              "start": "2026-07-01",
+              "end": "2026-07-31",
+              "owner": "Gaurav",
+              "remarks": null,
+              "blocked": null
+            },
+            {
+              "row": 62,
+              "title": "6.Addition of Competition Type and Periodicity fields in the Foreign Exposure template under Monthly Templates.",
+              "status": "LIVE",
+              "parked": false,
+              "parkedReason": null,
+              "start": "2026-07-01",
+              "end": "2026-07-31",
+              "owner": "Gaurav",
+              "remarks": null,
+              "blocked": null
+            },
+            {
+              "row": 62,
+              "title": "7.Addition of a Discipline dropdown on the dashboard.",
+              "status": "LIVE",
+              "parked": false,
+              "parkedReason": null,
+              "start": "2026-07-01",
+              "end": "2026-07-31",
+              "owner": "Gaurav",
+              "remarks": null,
+              "blocked": null
+            },
+            {
+              "row": 62,
+              "title": "8.Revamp of the UI/theme for all templates, with a vibrant and consistent colour family across the templates.",
+              "status": "LIVE",
+              "parked": false,
+              "parkedReason": null,
+              "start": "2026-07-01",
+              "end": "2026-07-31",
+              "owner": "Gaurav",
+              "remarks": null,
+              "blocked": null
+            },
+            {
+              "row": 62,
+              "title": "9.Changes and UI enhancements implemented and presented to DDG Ma’am on 10 September 2026 for review.",
+              "status": "LIVE",
+              "parked": false,
+              "parkedReason": null,
+              "start": "2026-07-01",
+              "end": "2026-07-31",
+              "owner": "Gaurav",
+              "remarks": null,
+              "blocked": null
+            },
+            {
+              "row": 62,
+              "title": "10.Updated design approved by DDG Ma’am on 10 September 2026, based on the discussed enhancements and UI changes.1. Meeting with the Ops division and showed them the HTML for the Monitoring system, and the Dashboard Documentation(FRD) is done for the same",
+              "status": "LIVE",
+              "parked": false,
+              "parkedReason": null,
+              "start": "2026-07-01",
+              "end": "2026-07-31",
+              "owner": "Gaurav",
+              "remarks": null,
+              "blocked": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "DBT and APBS — Entitlement Disbursement",
+      "pillar": "E",
+      "status": "DOING",
+      "parked": false,
+      "start": "2026-07-01",
+      "end": "2026-09-30",
+      "owner": "Mansi",
+      "workstreams": [
+        {
+          "title": "DBT Migration to new Server",
+          "status": "DOING",
+          "parked": false,
+          "parkedReason": null,
+          "start": "2026-07-01",
+          "end": "2026-07-31",
+          "owner": "Mansi",
+          "remarks": null,
+          "tasks": [
+            {
+              "row": 64,
+              "title": "1. DBT Migration to new Server",
+              "status": "DOING",
+              "parked": false,
+              "parkedReason": null,
+              "start": "2026-07-01",
+              "end": "2026-07-31",
+              "owner": "Mansi",
+              "remarks": "Remarks: Infra awaiting bid query responses",
+              "blocked": null
+            }
+          ]
+        },
+        {
+          "title": "Existing Issues and Audit Issues (VAPT)",
+          "status": "TO_DO",
+          "parked": false,
+          "parkedReason": null,
+          "start": null,
+          "end": null,
+          "owner": "Mansi",
+          "remarks": null,
+          "tasks": []
+        },
+        {
+          "title": "3 schemes live; PFMS integration",
+          "status": "DOING",
+          "parked": false,
+          "parkedReason": null,
+          "start": "2026-07-29",
+          "end": "2026-09-30",
+          "owner": "Mansi",
+          "remarks": null,
+          "tasks": [
+            {
+              "row": 66,
+              "title": "2. VAPT Audit and Patching",
+              "status": "TO_DO",
+              "parked": false,
+              "parkedReason": null,
+              "start": null,
+              "end": null,
+              "owner": "Mansi",
+              "remarks": null,
+              "blocked": null
+            },
+            {
+              "row": 67,
+              "title": "3. Sms account to be migrated from sp4 to khelo india account for DBT",
+              "status": "TO_DO",
+              "parked": false,
+              "parkedReason": null,
+              "start": "2026-09-03",
+              "end": null,
+              "owner": "Mansi",
+              "remarks": null,
+              "blocked": null
+            },
+            {
+              "row": 68,
+              "title": "4. Sign off on the DBT proposed Flow",
+              "status": "TO_DO",
+              "parked": false,
+              "parkedReason": null,
+              "start": "2026-07-29",
+              "end": null,
+              "owner": "Mansi",
+              "remarks": null,
+              "blocked": null
+            },
+            {
+              "row": 69,
+              "title": "5. Decision on whether the portal will be hosted on different domain - Same Domain",
+              "status": "TO_DO",
+              "parked": false,
+              "parkedReason": null,
+              "start": null,
+              "end": null,
+              "owner": "Mansi",
+              "remarks": null,
+              "blocked": null
+            },
+            {
+              "row": 70,
+              "title": "6. Designing for the process flow and it's integration with the New platform",
+              "status": "TO_DO",
+              "parked": false,
+              "parkedReason": null,
+              "start": null,
+              "end": null,
+              "owner": "Mansi",
+              "remarks": null,
+              "blocked": null
+            },
+            {
+              "row": 71,
+              "title": "7. Templatising for all schemes",
+              "status": "TO_DO",
+              "parked": false,
+              "parkedReason": null,
+              "start": null,
+              "end": null,
+              "owner": "Mansi",
+              "remarks": null,
+              "blocked": null
+            },
+            {
+              "row": 72,
+              "title": "8. Development for the all schemes and their hierarchial flows",
+              "status": "DOING",
+              "parked": false,
+              "parkedReason": null,
+              "start": "2026-08-01",
+              "end": "2026-09-30",
+              "owner": "Mansi",
+              "remarks": null,
+              "blocked": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Sports Infrastructure Registry",
+      "pillar": "F",
+      "status": "DOING",
+      "parked": false,
+      "start": "2026-09-01",
+      "end": "2026-09-30",
+      "owner": "Yogita",
+      "workstreams": [
+        {
+          "title": "National Infra Facility Registry (Web)",
+          "status": "DOING",
+          "parked": false,
+          "parkedReason": null,
+          "start": "2026-09-01",
+          "end": "2026-09-30",
+          "owner": "Yogita",
+          "remarks": null,
+          "tasks": [
+            {
+              "row": 73,
+              "title": "1. Prepared the Infra Registry and matching it to our database schema",
+              "status": "DOING",
+              "parked": false,
+              "parkedReason": null,
+              "start": "2026-09-01",
+              "end": "2026-09-30",
+              "owner": "Yogita",
+              "remarks": "Remarks: Scope Of Phase 1 for Infra Registry Management \n1. Only Entry of record will be from RC ADMIN, So for all records currently getting entered will be in a APPROVED state as per workflow.\n2. All \"Approved\" records across application will be displayed to SAI HO. (So may be no work flow engine required this point)\n3. SAI HO will have option to PUBLISH/REJECT option for now. \n4. RC ADMIN will see all related data entered within scope with STATUS.\n\nWorkflow Engine to be incorporated later.\nRemarks from the SAI team: BRD to be finalized by 7 Aug 2026\nUser Stories to be created by 10 Aug 2026\nDesign is in In Progress, First Draft to be shared by 7 Aug 2026\nMVP 1 is completed, Demo to be planned with Eng. Division on 10-Sep-2026.\nEntry Operator flow to be on Hold as per discussion on 10-Sep-2026\nField Level changes are shared by client. FRD to be updated by 11-Sep-2026 (EOD), Change Request to be created.",
+              "blocked": null
+            }
+          ]
+        },
+        {
+          "title": "National Infra Facility Registry (App)",
+          "status": "TO_DO",
+          "parked": false,
+          "parkedReason": null,
+          "start": null,
+          "end": null,
+          "owner": null,
+          "remarks": null,
+          "tasks": []
+        },
+        {
+          "title": "GIS Mapping and Visualisation",
+          "status": "TO_DO",
+          "parked": false,
+          "parkedReason": null,
+          "start": "2026-09-01",
+          "end": "2026-09-30",
+          "owner": "Yogita",
+          "remarks": null,
+          "tasks": [
+            {
+              "row": 75,
+              "title": "1. Integrating to the PM GatiShakti for mapping the Infra",
+              "status": "TO_DO",
+              "parked": false,
+              "parkedReason": null,
+              "start": "2026-09-01",
+              "end": "2026-09-30",
+              "owner": "Yogita",
+              "remarks": null,
+              "blocked": null
+            }
+          ]
+        },
+        {
+          "title": "Registry Maintenance and Governance",
+          "status": "TO_DO",
+          "parked": false,
+          "parkedReason": null,
+          "start": "2026-09-01",
+          "end": "2026-09-30",
+          "owner": "Yogita",
+          "remarks": null,
+          "tasks": [
+            {
+              "row": 76,
+              "title": "1. Registry creation, validation and approval of the Infra profiling- Prepared the FRD",
+              "status": "TO_DO",
+              "parked": false,
+              "parkedReason": null,
+              "start": "2026-09-01",
+              "end": "2026-09-30",
+              "owner": "Yogita",
+              "remarks": null,
+              "blocked": null
+            },
+            {
+              "row": 76,
+              "title": "2. Create a prototype of the mobile application",
+              "status": "TO_DO",
+              "parked": false,
+              "parkedReason": null,
+              "start": "2026-09-01",
+              "end": "2026-09-30",
+              "owner": "Yogita",
+              "remarks": null,
+              "blocked": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Works Management System",
+      "pillar": "F",
+      "status": "TO_DO",
+      "parked": false,
+      "start": "2026-08-01",
+      "end": "2026-09-30",
+      "owner": "Yogita",
+      "workstreams": [
+        {
+          "title": "Works Management System (Phase 1)",
+          "status": "TO_DO",
+          "parked": false,
+          "parkedReason": null,
+          "start": "2026-08-01",
+          "end": "2026-09-30",
+          "owner": "Yogita",
+          "remarks": null,
+          "tasks": [
+            {
+              "row": 77,
+              "title": "1. Prepared the BRD of the WMS Flow",
+              "status": "TO_DO",
+              "parked": false,
+              "parkedReason": null,
+              "start": "2026-08-01",
+              "end": "2026-09-30",
+              "owner": "Yogita",
+              "remarks": "Remarks: Development will be Completed by today 9 September 2026 and It will be moved to UAT by today itself\nRemarks from the SAI team: Testing completed till In Principle Approval. \nDemo for MVP 1 is planned at 2 pm with Eng. Division. \nChanges received in MVP 1, Revised FRD shared\n(This row of the plan listed 2 sub tasks in one cell; these remarks cover all of them.)",
+              "blocked": null
+            },
+            {
+              "row": 77,
+              "title": "2. Working on creating the prototype of WMS",
+              "status": "TO_DO",
+              "parked": false,
+              "parkedReason": null,
+              "start": "2026-08-01",
+              "end": "2026-09-30",
+              "owner": "Yogita",
+              "remarks": null,
+              "blocked": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Fit India Platform",
+      "pillar": "H",
+      "status": "DOING",
+      "parked": false,
+      "start": "2026-07-15",
+      "end": "2026-09-30",
+      "owner": "Yogita",
+      "workstreams": [
+        {
+          "title": "Fit India Mobile Application Improvisations",
+          "status": "TO_DO",
+          "parked": false,
+          "parkedReason": null,
+          "start": "2026-07-15",
+          "end": "2026-09-30",
+          "owner": "Yogita",
+          "remarks": null,
+          "tasks": [
+            {
+              "row": 78,
+              "title": "1. Shared the bug list with the existing team to make changes and tieline is 10 days.",
+              "status": "TO_DO",
+              "parked": false,
+              "parkedReason": null,
+              "start": "2026-07-15",
+              "end": "2026-09-30",
+              "owner": "Yogita",
+              "remarks": null,
+              "blocked": null
+            },
+            {
+              "row": 78,
+              "title": "2. Need to make changes in the website also changes to be discussed with nisha mam.",
+              "status": "TO_DO",
+              "parked": false,
+              "parkedReason": null,
+              "start": "2026-07-15",
+              "end": "2026-09-30",
+              "owner": "Yogita",
+              "remarks": null,
+              "blocked": null
+            }
+          ]
+        },
+        {
+          "title": "Fit India New Mobile Application - Phase 1",
+          "status": "DOING",
+          "parked": false,
+          "parkedReason": null,
+          "start": "2026-08-01",
+          "end": "2026-09-30",
+          "owner": "Yogita",
+          "remarks": null,
+          "tasks": [
+            {
+              "row": 79,
+              "title": "1. Development of new Website",
+              "status": "DOING",
+              "parked": false,
+              "parkedReason": null,
+              "start": "2026-08-01",
+              "end": "2026-09-30",
+              "owner": "Yogita",
+              "remarks": "Remarks from the SAI team: Plan a meeting with  the FIT India Team (Design, Dev, BA, QA)\n(This row of the plan listed 4 sub tasks in one cell; these remarks cover all of them.)",
+              "blocked": null
+            },
+            {
+              "row": 79,
+              "title": "2. Working on the BRD document to list down all the features of FIT INDIA Application.",
+              "status": "DOING",
+              "parked": false,
+              "parkedReason": null,
+              "start": "2026-08-01",
+              "end": "2026-09-30",
+              "owner": "Yogita",
+              "remarks": null,
+              "blocked": null
+            },
+            {
+              "row": 79,
+              "title": "3. Will Work on FRD of FIT INDIA Application",
+              "status": "DOING",
+              "parked": false,
+              "parkedReason": null,
+              "start": "2026-08-01",
+              "end": "2026-09-30",
+              "owner": "Yogita",
+              "remarks": null,
+              "blocked": null
+            },
+            {
+              "row": 79,
+              "title": "4. Prepare the prototype of the Application.",
+              "status": "DOING",
+              "parked": false,
+              "parkedReason": null,
+              "start": "2026-08-01",
+              "end": "2026-09-30",
+              "owner": "Yogita",
+              "remarks": null,
+              "blocked": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Khelo India Website",
+      "pillar": "I",
+      "status": "DOING",
+      "parked": false,
+      "start": "2026-08-01",
+      "end": "2026-09-30",
+      "owner": "Mansi",
+      "workstreams": [
+        {
+          "title": "Khelo India Website Phase 2: a.) Individual State/UT Page",
+          "status": "DOING",
+          "parked": false,
+          "parkedReason": null,
+          "start": "2026-09-01",
+          "end": "2026-09-30",
+          "owner": "Mansi",
+          "remarks": null,
+          "tasks": [
+            {
+              "row": 80,
+              "title": "Design and Develpoment",
+              "status": "DOING",
+              "parked": false,
+              "parkedReason": null,
+              "start": "2026-09-01",
+              "end": "2026-09-30",
+              "owner": "Mansi",
+              "remarks": "Remarks: Waiting for first level launch",
+              "blocked": "Blocked: Waiting for first level launch"
+            }
+          ]
+        },
+        {
+          "title": "Khelo India Website Phase 2: b.)Athletes Page",
+          "status": "DOING",
+          "parked": false,
+          "parkedReason": null,
+          "start": "2026-09-01",
+          "end": "2026-09-30",
+          "owner": "Mansi",
+          "remarks": null,
+          "tasks": [
+            {
+              "row": 81,
+              "title": "Design and Develpoment",
+              "status": "DOING",
+              "parked": false,
+              "parkedReason": null,
+              "start": "2026-09-01",
+              "end": "2026-09-30",
+              "owner": "Mansi",
+              "remarks": "Remarks: Waiting for first level launch",
+              "blocked": "Blocked: Waiting for first level launch"
+            }
+          ]
+        },
+        {
+          "title": "Khelo India Website Phase 2: c.)Selection Trials Page",
+          "status": "DOING",
+          "parked": false,
+          "parkedReason": null,
+          "start": "2026-08-01",
+          "end": "2026-08-31",
+          "owner": "Mansi",
+          "remarks": null,
+          "tasks": [
+            {
+              "row": 82,
+              "title": "Design and Develpoment",
+              "status": "DOING",
+              "parked": false,
+              "parkedReason": null,
+              "start": "2026-08-01",
+              "end": "2026-08-31",
+              "owner": "Mansi",
+              "remarks": "Remarks: Waiting for first level launch",
+              "blocked": "Blocked: Waiting for first level launch"
+            }
+          ]
+        },
+        {
+          "title": "Khelo India Website Phase 2: d.) Careers Page",
+          "status": "DOING",
+          "parked": false,
+          "parkedReason": null,
+          "start": "2026-08-01",
+          "end": "2026-08-31",
+          "owner": "Mansi",
+          "remarks": null,
+          "tasks": [
+            {
+              "row": 83,
+              "title": "Design and Develpoment",
+              "status": "DOING",
+              "parked": false,
+              "parkedReason": null,
+              "start": "2026-08-01",
+              "end": "2026-08-31",
+              "owner": "Mansi",
+              "remarks": "Remarks: Waiting for first level launch",
+              "blocked": "Blocked: Waiting for first level launch"
+            }
+          ]
+        },
+        {
+          "title": "Khelo India Website Phase 2: e.) Dashboard",
+          "status": "DOING",
+          "parked": false,
+          "parkedReason": null,
+          "start": "2026-08-01",
+          "end": "2026-08-31",
+          "owner": "Mansi",
+          "remarks": null,
+          "tasks": [
+            {
+              "row": 84,
+              "title": "Design and Develpoment",
+              "status": "DOING",
+              "parked": false,
+              "parkedReason": null,
+              "start": "2026-08-01",
+              "end": "2026-08-31",
+              "owner": "Mansi",
+              "remarks": "Remarks: Waiting for first level launch",
+              "blocked": "Blocked: Waiting for first level launch"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Athlete Management System",
+      "pillar": "B",
+      "status": "TO_DO",
+      "parked": false,
+      "start": "2026-09-01",
+      "end": "2026-09-30",
+      "owner": null,
+      "workstreams": [
+        {
+          "title": "Nutrition Module",
+          "status": "TO_DO",
+          "parked": false,
+          "parkedReason": null,
+          "start": "2026-09-01",
+          "end": "2026-09-30",
+          "owner": null,
+          "remarks": null,
+          "tasks": [
+            {
+              "row": 85,
+              "title": "Nutrition HPA and PA",
+              "status": "TO_DO",
+              "parked": false,
+              "parkedReason": null,
+              "start": "2026-09-01",
+              "end": "2026-09-30",
+              "owner": null,
+              "remarks": null,
+              "blocked": null
+            },
+            {
+              "row": 85,
+              "title": "Dashboard Planning",
+              "status": "TO_DO",
+              "parked": false,
+              "parkedReason": null,
+              "start": "2026-09-01",
+              "end": "2026-09-30",
+              "owner": null,
+              "remarks": null,
+              "blocked": null
+            },
+            {
+              "row": 85,
+              "title": "Batch List",
+              "status": "TO_DO",
+              "parked": false,
+              "parkedReason": null,
+              "start": "2026-09-01",
+              "end": "2026-09-30",
+              "owner": null,
+              "remarks": null,
+              "blocked": null
+            },
+            {
+              "row": 85,
+              "title": "My Batch",
+              "status": "TO_DO",
+              "parked": false,
+              "parkedReason": null,
+              "start": "2026-09-01",
+              "end": "2026-09-30",
+              "owner": null,
+              "remarks": null,
+              "blocked": null
+            },
+            {
+              "row": 85,
+              "title": "Diet Plan Templates",
+              "status": "TO_DO",
+              "parked": false,
+              "parkedReason": null,
+              "start": "2026-09-01",
+              "end": "2026-09-30",
+              "owner": null,
+              "remarks": null,
+              "blocked": null
+            },
+            {
+              "row": 85,
+              "title": "Appointments",
+              "status": "TO_DO",
+              "parked": false,
+              "parkedReason": null,
+              "start": "2026-09-01",
+              "end": "2026-09-30",
+              "owner": null,
+              "remarks": null,
+              "blocked": null
+            }
+          ]
+        },
+        {
+          "title": "Biochemistry Module",
+          "status": "TO_DO",
+          "parked": false,
+          "parkedReason": null,
+          "start": "2026-09-01",
+          "end": "2026-09-30",
+          "owner": null,
+          "remarks": null,
+          "tasks": [
+            {
+              "row": 86,
+              "title": "Biochemistry HPA and PA",
+              "status": "TO_DO",
+              "parked": false,
+              "parkedReason": null,
+              "start": "2026-09-01",
+              "end": "2026-09-30",
+              "owner": null,
+              "remarks": null,
+              "blocked": null
+            },
+            {
+              "row": 86,
+              "title": "Dashboard Planning",
+              "status": "TO_DO",
+              "parked": false,
+              "parkedReason": null,
+              "start": "2026-09-01",
+              "end": "2026-09-30",
+              "owner": null,
+              "remarks": null,
+              "blocked": null
+            },
+            {
+              "row": 86,
+              "title": "Batch List",
+              "status": "TO_DO",
+              "parked": false,
+              "parkedReason": null,
+              "start": "2026-09-01",
+              "end": "2026-09-30",
+              "owner": null,
+              "remarks": null,
+              "blocked": null
+            },
+            {
+              "row": 86,
+              "title": "My Batch",
+              "status": "TO_DO",
+              "parked": false,
+              "parkedReason": null,
+              "start": "2026-09-01",
+              "end": "2026-09-30",
+              "owner": null,
+              "remarks": null,
+              "blocked": null
+            },
+            {
+              "row": 86,
+              "title": "Biochemistry Reports",
+              "status": "TO_DO",
+              "parked": false,
+              "parkedReason": null,
+              "start": "2026-09-01",
+              "end": "2026-09-30",
+              "owner": null,
+              "remarks": null,
+              "blocked": null
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "skipped": [
+    {
+      "row": 63,
+      "reason": "no \"Name of Portal / Project\" (Pilot Training to be set up with RC)"
+    },
+    {
+      "row": 87,
+      "reason": "no activity or sub-activity"
+    }
+  ]
+}

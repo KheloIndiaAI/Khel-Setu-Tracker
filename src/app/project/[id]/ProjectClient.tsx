@@ -89,7 +89,7 @@ export default function ProjectClient({ project, people, canManage }: any) {
         <div className="flex gap-8 items-end">
           <div className="flex-grow flex flex-col gap-1.5">
             <div className="text-[13px] font-semibold tracking-[1px] uppercase text-[#5C645F]">
-              Pillar {project.pillar?.letter} &middot; {project.pillar?.name}
+              Pillar {project.pillar?.letter}{project.pillar?.name ? <> &middot; {project.pillar.name}</> : null}
             </div>
             <div className="font-black text-[48px] uppercase leading-[1.1]" style={{ fontFamily: "'Big Shoulders Display', sans-serif" }}>
               {project.title}
@@ -169,6 +169,12 @@ export default function ProjectClient({ project, people, canManage }: any) {
                   <div key={c.id} className="bg-white border border-[#DDD9CE] rounded-[10px] p-3 flex flex-col gap-2 shadow-sm">
                     <div className="text-sm font-semibold leading-[1.35]">{c.title}</div>
                     <div className="text-[13px] text-[#5C645F]">{c.workstreamName} &middot; {c.ownerName || 'Unassigned'}</div>
+                    {c.remarks && (
+                      <details className="text-[13px] text-[#3A413D]">
+                        <summary className="cursor-pointer font-semibold text-[#5C645F]">Remarks</summary>
+                        <p className="mt-1 whitespace-pre-wrap leading-[1.4]">{c.remarks}</p>
+                      </details>
+                    )}
                     {canManage && <ItemActions item={c} people={people} compact />}
                     {col.id !== 'LIVE' && (
                       <button className="mt-1 min-h-[44px] border border-[#121519] rounded-lg bg-white text-sm font-semibold text-[#121519] hover:bg-gray-50">

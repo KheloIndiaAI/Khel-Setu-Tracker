@@ -120,7 +120,8 @@ model Item {
   
   parked          Boolean  @default(false)
   parkedReason    String?
-  
+  remarks         String?  // Free text carried over from the plan (remarks, SAI remarks, actual completion date)
+
   evidenceLinks   String[] // Array of URLs
   
   // Only for Projects

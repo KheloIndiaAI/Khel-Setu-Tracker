@@ -56,7 +56,7 @@ export default async function PassportPage({ params }: { params: Promise<{ id: s
           <div className="bg-white border border-[#DDD9CE] rounded-[14px] p-5 flex flex-col gap-2.5">
             <div className="font-extrabold text-[26px] uppercase" style={{ fontFamily: "'Big Shoulders Display', sans-serif" }}>Identity</div>
             <div className="text-[15px] leading-[1.6]">
-              <span className="text-[#5C645F]">Pillar</span> &middot; {project.pillar?.letter}, {project.pillar?.name}<br/>
+              <span className="text-[#5C645F]">Pillar</span> &middot; {project.pillar?.letter}{project.pillar?.name ? `, ${project.pillar.name}` : ''}<br/>
               <span className="text-[#5C645F]">Owner at SAI</span> &middot; [officer, IT Division]<br/>
               <span className="text-[#5C645F]">Lead at NeGD</span> &middot; {project.ownerName || 'Mansi'} (BA)<br/>
               <span className="text-[#5C645F]">Target date</span> &middot; {project.targetEndDate ? new Date(project.targetEndDate).toLocaleDateString('en-GB') : '30 Sep 2026'}
