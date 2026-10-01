@@ -1,5 +1,5 @@
 import { prisma } from './prisma';
-import { calculateActual, calculatePacer, ItemProgressData, Status } from './progress';
+import { calculateActual, calculatePacer, ItemProgressData, Status, withWorkstreamProgress } from './progress';
 
 export async function getProjectsWithProgress(today: Date = new Date()) {
   const projects = await prisma.item.findMany({
@@ -64,6 +64,7 @@ export async function getProjectsWithProgress(today: Date = new Date()) {
 
     return {
       ...proj,
+      children: withWorkstreamProgress(proj.children, today),
       actual,
       pacer,
       allHurdles
@@ -157,6 +158,7 @@ export async function getProject(id: string, today: Date = new Date()) {
 
   return {
     ...proj,
+    children: withWorkstreamProgress(proj.children, today),
     actual,
     pacer,
     allHurdles

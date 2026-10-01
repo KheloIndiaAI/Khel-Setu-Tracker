@@ -133,3 +133,32 @@ export function calculateMissionHeadline(mission: MissionProgressData, today: Da
     forecastFinish,
   };
 }
+
+/** Anything with the fields progress needs, such as a Prisma item that carries its children. */
+export type ProgressItem = {
+  id: string;
+  status: string;
+  weight: number;
+  parked: boolean;
+  targetStartDate: Date | null;
+  targetEndDate: Date | null;
+  children?: ProgressItem[];
+};
+
+const toProgressData = (i: ProgressItem): ItemProgressData => ({
+  id: i.id,
+  status: i.status as Status,
+  weight: i.weight,
+  parked: i.parked,
+  targetStartDate: i.targetStartDate,
+  targetEndDate: i.targetEndDate,
+  children: i.children?.map(toProgressData),
+});
+
+/** Adds actual and planned % to each workstream, from its sub tasks, by the same rules as the track bar. */
+export function withWorkstreamProgress<W extends ProgressItem>(workstreams: W[], today: Date): (W & { actual: number; pacer: number })[] {
+  return workstreams.map((ws) => {
+    const data = toProgressData(ws);
+    return { ...ws, actual: calculateActual(data), pacer: calculatePacer(data, today) };
+  });
+}

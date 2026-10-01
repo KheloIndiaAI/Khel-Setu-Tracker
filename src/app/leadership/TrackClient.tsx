@@ -6,8 +6,37 @@ import { useRouter } from 'next/navigation';
 import CommunicationThread from '@/components/CommunicationThread';
 import ItemActions from '@/components/ItemActions';
 
+const STATUS_LABEL: Record<string, string> = {
+  TO_DO: 'To do', DOING: 'Doing', IN_REVIEW: 'In review', ACCEPTED: 'Accepted', LIVE: 'Live',
+};
+
+// Sheet-style numbering ("2. Login design") decides the order; titles without a number keep the order they came in.
+const leadingNumber = (title: string) => {
+  const m = /^\s*(\d+)\s*[.)]/.exec(title);
+  return m ? Number(m[1]) : null;
+};
+const sortTasks = (tasks: any[]) =>
+  [...tasks].sort((a, b) => {
+    const x = leadingNumber(a.title);
+    const y = leadingNumber(b.title);
+    return x !== null && y !== null ? x - y : 0;
+  });
+
+const fmtDay = (d: string | Date) =>
+  new Date(d).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', timeZone: 'UTC' });
+const fmtRange = (start?: string | Date | null, end?: string | Date | null) =>
+  start && end ? `${fmtDay(start)} to ${fmtDay(end)}` : start ? `from ${fmtDay(start)}` : end ? `by ${fmtDay(end)}` : 'No dates';
+
 export default function TrackClient({ projects, mission, headline, people, canManage }: any) {
   const [selIndex, setSelIndex] = useState<number | null>(0);
+  // Workstreams whose sub tasks are shown
+  const [openWs, setOpenWs] = useState<Set<string>>(new Set());
+  const toggleWs = (id: string) =>
+    setOpenWs((prev) => {
+      const next = new Set(prev);
+      if (next.has(id)) next.delete(id); else next.add(id);
+      return next;
+    });
   const router = useRouter();
   
   // Universal Add Item State
@@ -234,20 +263,78 @@ export default function TrackClient({ projects, mission, headline, people, canMa
                               Its own track: workstreams as lanes
                             </div>
                             {p.children?.map((ws: any, i: number) => {
-                              const wsActual = ws.status === 'LIVE' ? 100 : (ws.status === 'DOING' ? 25 : 0); // Simplified for prototype view
-                              const wsPacer = 100; // Simplified
+                              const wsActual = ws.actual ?? 0;
+                              const wsPacer = ws.pacer ?? 0;
                               const gap = wsActual - wsPacer;
+                              const tasks = sortTasks(ws.children ?? []);
+                              const isOpen = openWs.has(ws.id);
                               return (
-                                <div key={ws.id} className={`grid ${canManage ? 'grid-cols-[230px_1fr_60px_auto] gap-x-2' : 'grid-cols-[230px_1fr_60px]'} items-center min-h-[32px] border-b border-[#E2DCCF]`}>
-                                  <span className="text-[13px] font-bold truncate pr-2 text-[#3A3E44]">{ws.title}</span>
-                                  <span className="relative block h-[26px] my-[3px]" style={{ background: i % 2 === 0 ? '#B5472A' : '#A8411F' }}>
-                                    <span className="absolute top-[3px] w-[20px] h-[20px] rounded-full border-2 border-dashed border-white box-border block opacity-70" style={{ left: `calc(${wsPacer * 0.92}% - 10px)` }}></span>
-                                    <span className="absolute top-[2px] w-[22px] h-[22px] rounded-full bg-white block shadow-sm border-2 border-[#121519]" style={{ left: `calc(${wsActual * 0.92}% - 11px)` }}></span>
-                                  </span>
-                                  <span className="font-mono text-[13px] font-bold text-right" style={{ color: gap >= 0 ? '#1F6B4A' : '#A8321F' }}>
-                                    {gap >= 0 ? 'on pace' : gap}
-                                  </span>
-                                  {canManage && <ItemActions item={ws} people={people} compact />}
+                                <div key={ws.id} className="flex flex-col border-b border-[#E2DCCF]">
+                                  <div className={`grid ${canManage ? 'grid-cols-[230px_1fr_60px_auto] gap-x-2' : 'grid-cols-[230px_1fr_60px]'} items-center min-h-[32px]`}>
+                                    <button
+                                      type="button"
+                                      onClick={() => toggleWs(ws.id)}
+                                      aria-expanded={isOpen}
+                                      aria-label={`${isOpen ? 'Hide' : 'Show'} the ${tasks.length} sub tasks of ${ws.title}`}
+                                      className="flex items-center gap-1.5 text-left text-[13px] font-bold pr-2 text-[#3A3E44] hover:text-[#121519] min-w-0"
+                                    >
+                                      <svg aria-hidden="true" width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={`shrink-0 transition-transform ${isOpen ? 'rotate-90' : ''}`}><path d="M4 2l4 4-4 4" /></svg>
+                                      <span className="truncate" title={ws.title}>{ws.title}</span>
+                                      <span className="shrink-0 font-mono text-[11px] font-normal text-[#5A5E63]">{tasks.length}</span>
+                                    </button>
+                                    <span className="relative block h-[26px] my-[3px]" style={{ background: i % 2 === 0 ? '#B5472A' : '#A8411F' }}>
+                                      <span className="absolute top-[3px] w-[20px] h-[20px] rounded-full border-2 border-dashed border-white box-border block opacity-70" style={{ left: `calc(${wsPacer * 0.92}% - 10px)` }}></span>
+                                      <span className="absolute top-[2px] w-[22px] h-[22px] rounded-full bg-white block shadow-sm border-2 border-[#121519]" style={{ left: `calc(${wsActual * 0.92}% - 11px)` }}></span>
+                                    </span>
+                                    <span className="font-mono text-[13px] font-bold text-right" style={{ color: ws.parked ? '#5A5E63' : gap >= -0.5 ? '#1F6B4A' : '#A8321F' }}>
+                                      {ws.parked ? 'parked' : gap >= -0.5 ? 'on pace' : Math.round(gap)}
+                                    </span>
+                                    {canManage && <ItemActions item={ws} people={people} compact />}
+                                  </div>
+
+                                  {isOpen && (
+                                    <div className="flex flex-col gap-1.5 pl-5 pb-3 pt-1">
+                                      {tasks.length === 0 && (
+                                        <div className="text-[13px] italic text-[#5A5E63]">No sub tasks yet.</div>
+                                      )}
+                                      {tasks.map((t: any) => {
+                                        const blocked = (t.hurdles ?? []).some((h: any) => !h.closedAt);
+                                        const st = STATUS_LABEL[t.status] ?? t.status;
+                                        return (
+                                          <div key={t.id} className="flex items-start gap-3 bg-[#F9F8F6] border border-[#E2DCCF] rounded-xl px-3 py-2">
+                                            <div className="flex-grow min-w-0 flex flex-col gap-1">
+                                              <div className="flex flex-wrap items-center gap-2">
+                                                <span className="text-[13px] font-semibold leading-[1.35]">{t.title}</span>
+                                                <span className="px-2 py-0.5 rounded-full bg-[#ECE9DF] text-[11px] font-bold text-[#3A3E44]">{st}</span>
+                                                {t.parked && <span className="px-2 py-0.5 rounded-full bg-[#ECE9DF] text-[11px] font-bold text-[#5A5E63]">Parked</span>}
+                                                {blocked && <span className="px-2 py-0.5 rounded-full bg-[#F7E1DD] text-[11px] font-bold text-[#9E2F24]">Blocked</span>}
+                                              </div>
+                                              <div className="text-[12px] text-[#5A5E63]">
+                                                {t.ownerName || 'Unassigned'} &middot; {fmtRange(t.targetStartDate, t.targetEndDate)}
+                                              </div>
+                                              {t.remarks && (
+                                                <details className="text-[12px] text-[#3A3E44]">
+                                                  <summary className="cursor-pointer font-semibold text-[#5A5E63]">Remarks</summary>
+                                                  <p className="mt-1 whitespace-pre-wrap leading-[1.4]">{t.remarks}</p>
+                                                </details>
+                                              )}
+                                            </div>
+                                            {canManage && <ItemActions item={t} people={people} compact />}
+                                          </div>
+                                        );
+                                      })}
+                                      <button
+                                        type="button"
+                                        onClick={() => {
+                                          setNewItem({ title: '', type: 'TASK', projectId: p.id, workstreamId: ws.id, start: '', end: '', teamIds: [] });
+                                          setIsAddingItem(true);
+                                        }}
+                                        className="self-start h-8 px-4 rounded-full border-2 border-[#121519] text-[12px] font-bold hover:bg-[#E2DCCF] transition-colors"
+                                      >
+                                        + Add sub task
+                                      </button>
+                                    </div>
+                                  )}
                                 </div>
                               )
                             })}

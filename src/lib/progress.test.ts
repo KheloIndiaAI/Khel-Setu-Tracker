@@ -5,7 +5,48 @@ import {
   calculatePacer,
   calculateMissionHeadline,
   ItemProgressData,
+  withWorkstreamProgress,
 } from './progress';
+
+describe('withWorkstreamProgress', () => {
+  const task = (id: string, status: string, parked = false, start: string | null = '2026-07-01', end: string | null = '2026-07-31') => ({
+    id, status, weight: 1, parked,
+    targetStartDate: start ? new Date(start) : null,
+    targetEndDate: end ? new Date(end) : null,
+  });
+  const ws = (id: string, children: ReturnType<typeof task>[], status = 'TO_DO', parked = false) => ({
+    ...task(id, status, parked, null, null), children,
+  });
+  const today = new Date('2026-09-01');
+
+  it('averages the sub tasks, so a finished workstream is 100 and a half done one is not', () => {
+    const [done, half] = withWorkstreamProgress([
+      ws('a', [task('1', 'LIVE'), task('2', 'LIVE')]),
+      ws('b', [task('3', 'LIVE'), task('4', 'TO_DO')]),
+    ], today);
+    expect(done.actual).toBe(100);
+    expect(half.actual).toBe(50);
+  });
+
+  it('plans 100 once every sub task is past its end date, and leaves parked sub tasks out', () => {
+    const [w] = withWorkstreamProgress([ws('a', [task('1', 'LIVE'), task('2', 'TO_DO', true)])], today);
+    expect(w.pacer).toBe(100);
+    expect(w.actual).toBe(100); // the parked one does not drag it down
+  });
+
+  it('shows a parked workstream as 0 and keeps the other fields', () => {
+    const [w] = withWorkstreamProgress([ws('a', [task('1', 'TO_DO', true)], 'TO_DO', true)], today);
+    expect(w.actual).toBe(0);
+    expect(w.pacer).toBe(0);
+    expect(w.id).toBe('a');
+    expect(w.children).toHaveLength(1);
+  });
+
+  it('uses the workstream own status when it has no sub tasks', () => {
+    const [w] = withWorkstreamProgress([ws('a', [], 'DOING')], today);
+    expect(w.actual).toBe(25);
+  });
+});
 
 describe('Progress Calculations', () => {
   describe('calculateActual', () => {

@@ -45,7 +45,7 @@ export default function ProjectClient({ project, people, canManage }: any) {
   ) || [];
 
   const cols = {
-    'TO_DO': tasks.filter((t: any) => t.status === 'TO_DO' && !t.parked),
+    'TO_DO': tasks.filter((t: any) => t.status === 'TO_DO'), // parked ones stay visible, marked Parked
     'DOING': tasks.filter((t: any) => t.status === 'DOING'),
     'IN_REVIEW': tasks.filter((t: any) => t.status === 'IN_REVIEW'),
     'ACCEPTED': tasks.filter((t: any) => t.status === 'ACCEPTED'),
@@ -168,6 +168,12 @@ export default function ProjectClient({ project, people, canManage }: any) {
                 {col.items.map((c: any) => (
                   <div key={c.id} className="bg-white border border-[#DDD9CE] rounded-[10px] p-3 flex flex-col gap-2 shadow-sm">
                     <div className="text-sm font-semibold leading-[1.35]">{c.title}</div>
+                    {(c.parked || (c.hurdles ?? []).some((h: any) => !h.closedAt)) && (
+                      <div className="flex gap-1.5">
+                        {c.parked && <span className="px-2 py-0.5 rounded-full bg-[#ECE9DF] text-[11px] font-bold text-[#5C645F]">Parked</span>}
+                        {(c.hurdles ?? []).some((h: any) => !h.closedAt) && <span className="px-2 py-0.5 rounded-full bg-[#F7E1DD] text-[11px] font-bold text-[#9E2F24]">Blocked</span>}
+                      </div>
+                    )}
                     <div className="text-[13px] text-[#5C645F]">{c.workstreamName} &middot; {c.ownerName || 'Unassigned'}</div>
                     {c.remarks && (
                       <details className="text-[13px] text-[#3A413D]">
@@ -176,7 +182,7 @@ export default function ProjectClient({ project, people, canManage }: any) {
                       </details>
                     )}
                     {canManage && <ItemActions item={c} people={people} compact />}
-                    {col.id !== 'LIVE' && (
+                    {col.id !== 'LIVE' && !c.parked && (
                       <button className="mt-1 min-h-[44px] border border-[#121519] rounded-lg bg-white text-sm font-semibold text-[#121519] hover:bg-gray-50">
                         {col.id === 'TO_DO' ? 'Start' : (col.id === 'DOING' ? 'Send for review' : (col.id === 'IN_REVIEW' ? 'Accept as lead' : 'Mark live'))}
                       </button>
