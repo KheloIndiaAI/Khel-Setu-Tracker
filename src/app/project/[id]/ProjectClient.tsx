@@ -166,8 +166,13 @@ export default function ProjectClient({ project, people, canManage }: any) {
                   <div className="text-sm text-[#5C645F] py-2 px-0.5">Nothing waiting to go live.</div>
                 )}
                 {col.items.map((c: any) => (
-                  <div key={c.id} className="bg-white border border-[#DDD9CE] rounded-[10px] p-3 flex flex-col gap-2 shadow-sm">
-                    <div className="text-sm font-semibold leading-[1.35]">{c.title}</div>
+                  <div key={c.id} className="relative bg-white border border-[#DDD9CE] rounded-[10px] p-3 flex flex-col gap-2 shadow-sm">
+                    {canManage && (
+                      <div className="absolute top-1.5 right-1.5">
+                        <ItemActions item={c} people={people} compact />
+                      </div>
+                    )}
+                    <div className={`text-sm font-semibold leading-[1.35] ${canManage ? 'pr-7' : ''}`}>{c.title}</div>
                     {(c.parked || (c.hurdles ?? []).some((h: any) => !h.closedAt)) && (
                       <div className="flex gap-1.5">
                         {c.parked && <span className="px-2 py-0.5 rounded-full bg-[#ECE9DF] text-[11px] font-bold text-[#5C645F]">Parked</span>}
@@ -181,7 +186,6 @@ export default function ProjectClient({ project, people, canManage }: any) {
                         <p className="mt-1 whitespace-pre-wrap leading-[1.4]">{c.remarks}</p>
                       </details>
                     )}
-                    {canManage && <ItemActions item={c} people={people} compact />}
                     {col.id !== 'LIVE' && !c.parked && (
                       <button className="mt-1 min-h-[44px] border border-[#121519] rounded-lg bg-white text-sm font-semibold text-[#121519] hover:bg-gray-50">
                         {col.id === 'TO_DO' ? 'Start' : (col.id === 'DOING' ? 'Send for review' : (col.id === 'IN_REVIEW' ? 'Accept as lead' : 'Mark live'))}

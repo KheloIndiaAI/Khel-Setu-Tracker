@@ -270,7 +270,7 @@ export default function TrackClient({ projects, mission, headline, people, canMa
                               const isOpen = openWs.has(ws.id);
                               return (
                                 <div key={ws.id} className="flex flex-col border-b border-[#E2DCCF]">
-                                  <div className={`grid ${canManage ? 'grid-cols-[230px_1fr_60px_auto] gap-x-2' : 'grid-cols-[230px_1fr_60px]'} items-center min-h-[32px]`}>
+                                  <div className={`grid ${canManage ? 'grid-cols-[230px_1fr_64px_28px] gap-x-3' : 'grid-cols-[230px_1fr_64px] gap-x-3'} items-center min-h-[38px]`}>
                                     <button
                                       type="button"
                                       onClick={() => toggleWs(ws.id)}
@@ -301,7 +301,7 @@ export default function TrackClient({ projects, mission, headline, people, canMa
                                         const blocked = (t.hurdles ?? []).some((h: any) => !h.closedAt);
                                         const st = STATUS_LABEL[t.status] ?? t.status;
                                         return (
-                                          <div key={t.id} className="flex items-start gap-3 bg-[#F9F8F6] border border-[#E2DCCF] rounded-xl px-3 py-2">
+                                          <div key={t.id} className="flex items-start gap-2 bg-[#F9F8F6] border border-[#E2DCCF] rounded-xl pl-3 pr-1.5 py-2">
                                             <div className="flex-grow min-w-0 flex flex-col gap-1">
                                               <div className="flex flex-wrap items-center gap-2">
                                                 <span className="text-[13px] font-semibold leading-[1.35]">{t.title}</span>

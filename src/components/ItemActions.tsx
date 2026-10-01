@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/navigation';
 
 const TYPE_LABEL: Record<string, string> = {
@@ -91,6 +91,45 @@ export default function ItemActions({
   };
   const close = () => { if (!busy) setMode(null); };
 
+  // The three-dots menu is positioned from the button's place on screen (fixed), because the panels it sits in clip overflow.
+  const [menu, setMenu] = useState<{ x: number; y: number } | null>(null);
+  const btnRef = useRef<HTMLButtonElement>(null);
+  const menuRef = useRef<HTMLDivElement>(null);
+  const openMenu = () => {
+    const r = btnRef.current?.getBoundingClientRect();
+    if (!r) return;
+    const w = 148;
+    const h = 92;
+    const fitsBelow = window.innerHeight - r.bottom > h + 8;
+    setMenu({
+      x: Math.max(8, Math.min(r.right - w, window.innerWidth - w - 8)),
+      y: fitsBelow ? r.bottom + 4 : Math.max(8, r.top - h - 4),
+    });
+  };
+
+  useEffect(() => {
+    if (!menu) return;
+    menuRef.current?.querySelector<HTMLButtonElement>('button')?.focus();
+    const away = (e: PointerEvent) => {
+      const t = e.target as Node;
+      if (!menuRef.current?.contains(t) && !btnRef.current?.contains(t)) setMenu(null);
+    };
+    const esc = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') { setMenu(null); btnRef.current?.focus(); }
+    };
+    const dismiss = () => setMenu(null);
+    document.addEventListener('pointerdown', away);
+    document.addEventListener('keydown', esc);
+    window.addEventListener('scroll', dismiss, true);
+    window.addEventListener('resize', dismiss);
+    return () => {
+      document.removeEventListener('pointerdown', away);
+      document.removeEventListener('keydown', esc);
+      window.removeEventListener('scroll', dismiss, true);
+      window.removeEventListener('resize', dismiss);
+    };
+  }, [menu]);
+
   useEffect(() => {
     if (!mode) return;
     const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape' && !busy) setMode(null); };
@@ -144,30 +183,53 @@ export default function ItemActions({
     }
   }
 
-  const size = compact ? 'h-7 px-3 text-[12px]' : 'h-9 px-4 text-[13px]';
   const below = describeBelow(item);
   const field = 'w-full h-11 px-4 rounded-xl border border-[#DDD9CE] focus:outline-none focus:border-[#121519] bg-white';
 
   return (
     <>
-      <span className="inline-flex gap-2 shrink-0">
-        <button
-          type="button"
-          onClick={() => open('edit')}
-          aria-label={`Edit ${label} ${item.title}`}
-          className={`${size} rounded-full border-2 border-[#121519] font-bold text-[#121519] hover:bg-[#E2DCCF] transition-colors`}
+      <button
+        ref={btnRef}
+        type="button"
+        onClick={() => (menu ? setMenu(null) : openMenu())}
+        aria-haspopup="menu"
+        aria-expanded={menu !== null}
+        aria-label={`Actions for ${label} ${item.title}`}
+        className={`${compact ? 'w-7 h-7' : 'w-9 h-9'} shrink-0 inline-flex items-center justify-center rounded-full text-[#5A5E63] hover:bg-[#E2DCCF] hover:text-[#121519] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#121519] transition-colors ${menu ? 'bg-[#E2DCCF] text-[#121519]' : ''}`}
+      >
+        <svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+          <circle cx="8" cy="3" r="1.5" />
+          <circle cx="8" cy="8" r="1.5" />
+          <circle cx="8" cy="13" r="1.5" />
+        </svg>
+      </button>
+
+      {menu && (
+        <div
+          ref={menuRef}
+          role="menu"
+          aria-label={`${label} actions`}
+          className="fixed z-[70] w-[148px] py-1.5 bg-white border border-[#DDD9CE] rounded-xl shadow-lg text-left"
+          style={{ left: menu.x, top: menu.y }}
         >
-          Edit
-        </button>
-        <button
-          type="button"
-          onClick={() => open('delete')}
-          aria-label={`Delete ${label} ${item.title}`}
-          className={`${size} rounded-full border-2 border-[#9E2F24] font-bold text-[#9E2F24] hover:bg-[#F7E1DD] transition-colors`}
-        >
-          Delete
-        </button>
-      </span>
+          <button
+            type="button"
+            role="menuitem"
+            onClick={() => { setMenu(null); open('edit'); }}
+            className="w-full px-4 py-2 text-left text-[14px] font-semibold text-[#121519] hover:bg-[#F2EEE5] focus:outline-none focus:bg-[#F2EEE5]"
+          >
+            Edit {label}
+          </button>
+          <button
+            type="button"
+            role="menuitem"
+            onClick={() => { setMenu(null); open('delete'); }}
+            className="w-full px-4 py-2 text-left text-[14px] font-semibold text-[#9E2F24] hover:bg-[#F7E1DD] focus:outline-none focus:bg-[#F7E1DD]"
+          >
+            Delete {label}
+          </button>
+        </div>
+      )}
 
       {mode === 'edit' && (
         <div className="fixed inset-0 z-[60] bg-black/50 backdrop-blur-sm flex items-center justify-center p-4" onMouseDown={(e) => { if (e.target === e.currentTarget) close(); }}>
